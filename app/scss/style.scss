@@ -1,10 +1,19 @@
-// Переменные
+// Variables
 @import "variables.scss";
 
-// Обнуление
+// Reboot
 @import "reboot.scss";
 
+// ----------------------------------
 
+html {
+    font-size: $size-default;
+}
 
+body {
+    font-family: $inter;
+    font-size: 1.7rem;
 
-
+    color: $color-white;
+    background-color: $color-black;
+}
