@@ -21,7 +21,7 @@ function startServer() {
 }
 
 function styles() {
-    return src('app/scss/**/*.scss')
+    return src(['app/scss/variables.scss', 'app/scss/reboot.scss' , 'app/scss/**/*.scss'])
         .pipe(concat('style.min.css'))
         .pipe(scss({ outputStyle: 'compressed' }))
         .pipe(prefixer({
