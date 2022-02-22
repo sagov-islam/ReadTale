@@ -1,0 +1,14 @@
+.rt-btn--size {
+
+    &-small {
+        min-width: $input-width-small;
+    }
+
+    &-normal {
+        min-width: $input-width-normal;
+    }
+
+    &-big {
+        min-width: $input-width-big;
+    }
+}

@@ -11,23 +11,41 @@ $black: 900;
 
 // Font Size
 $size-default: 10px;
+$text: 1.5rem;
 $h1: 5.8rem;
 $h2: 4.5rem;
 
 // Colors
 $color-black: #151515;
 $color-white: #DDDDDD;
-$color-silver: #7B7B7B;
+$color-silver: #616161;
 $color-orange: #EF4800;
 $color-red: #EC3D3D;
 $color-green: #66D223;
 $color-brown: #EB7F00;
 
 // Border Radius
-$radius-default: 8px;
+$radius-default: 5px;
 
-// Padding and Margin
-$margin-default: 24px;
+// --- INPUT AND BUTTON --->
 
-// Input Height(<input>, <button>)
-$input-height-default: 56px;
+// Height
+$input-height-default: 4.8rem;
+
+// Width
+$input-width-small: 130px;
+$input-width-normal: 200px;
+$input-width-big: 300px;
+
+// Colors
+$input-color-bg: #3d3d3d;
+$input-color-text: #646464;
+$input-color-text-active: #818181;
+
+// <--- INPUT AND BUTTON---
+
+
+// Spacing
+$spacing-default: 24px;
+
+// Button Sizes
