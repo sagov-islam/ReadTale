@@ -1,0 +1,28 @@
+.rt-header {
+    width: 100%;
+    padding: 17px 0;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-left {
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            
+        }
+
+        &-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+    }
+
+    &__nav {
+        margin-bottom: 4px;
+    }
+}
