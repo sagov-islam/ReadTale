@@ -16,7 +16,8 @@ function startServer() {
     server.init({
         server: {
             baseDir: 'app'
-        }
+        },
+        notify: false
     })
 }
 
