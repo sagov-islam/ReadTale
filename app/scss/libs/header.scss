@@ -9,7 +9,7 @@
 
         &-left {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             height: 100%;
             
         }
@@ -20,9 +20,5 @@
             align-items: center;
             justify-content: end;
         }
-    }
-
-    &__nav {
-        margin-bottom: 4px;
     }
 }
