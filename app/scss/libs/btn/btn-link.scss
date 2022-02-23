@@ -1,0 +1,10 @@
+.rt-btn-link {
+    font-weight: $regular;
+    color: $color-silver;
+    font-size: $font-size-text;
+    transition: color .2s;
+
+    &:hover {
+        color: #949494;
+    } 
+}
