@@ -1,22 +1,57 @@
 html {
-    font-size: $size-default;
+    font-size: $font-size-default;
 }
 
 body {
     font-family: $inter;
-    font-size: 1.7rem;
-
+    font-size: 1.5rem;
     color: $color-white;
     background-color: $color-black;
 }
 
-.rt-link {
-    font-weight: $regular;
-    color: $color-silver;
-    font-size: $text;
+.readtale {
+    display: flex;
+    align-items: center;
+    height: 100%;
 
-    transition: color .2s;
-    &:hover {
-        color: #949494;
-    } 
+    &__content {
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    &__bg-title {
+        font-family: $montserrat;
+        font-weight: $black;
+        font-size: 8vw;
+        color: $color-orange;
+        width: 70vw;
+    }
+
+    &__text {
+        position: absolute;
+        top: 54%;
+        left: 26vw;
+
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        &-description {
+            font-family: Inter;
+            font-weight: $regular;
+            font-size: 1vw;
+            color: $color-white;
+            line-height: 1.7vw;
+
+            width: 22vw;
+            margin-left: 2vw;
+            margin-top: 5px;
+        }
+
+        &-title {
+            display: inline-block;
+            font-size: 3.2vw;
+            font-family: $poiret-one;
+        }
+    }
 }
