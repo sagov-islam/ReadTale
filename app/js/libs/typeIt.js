@@ -23,6 +23,7 @@ class TypeIt {
         
         setTimeout(() => {
             if (line > arr.length - 1) {
+                clearInterval()
                 return
             }
 
