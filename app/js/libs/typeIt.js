@@ -22,7 +22,7 @@ class TypeIt {
         const arr = this.#textList;
         
         setTimeout(() => {
-            if (line > arr.length - 1) {
+            if (line === arr.length) {
                 clearInterval()
                 return
             }
@@ -32,7 +32,7 @@ class TypeIt {
                 return
             };
 
-            if (letter >= arr[line].length) {
+            if (letter === arr[line].length) {
                 this.#timeOut(this.#interval, ++line, letter = 0);
                 return
             }
@@ -43,7 +43,7 @@ class TypeIt {
                 this.#timeOut(this.#interval, line, ++letter);
                 return
             }
-            
+
         }, time);
     }
 
