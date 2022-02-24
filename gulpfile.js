@@ -36,7 +36,7 @@ function styles() {
 function scripts() {
     return src(['app/js/**/*.js', '!app/js/min/**/*.js'])
         .pipe(concat('main.min.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest('app/js/.min'))
 }
 
