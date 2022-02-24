@@ -1,17 +1,17 @@
 class TypeIt {
 
     #letter = 0;
-    #line = 0
+    #line = 0;
     #result = '';
 
     #textList;
     #interval;
-    #dataAtr
+    #dataAtr;
 
     constructor(textList, interval, dataAtr) {
-        this.#textList = textList
-        this.#interval = interval
-        this.#dataAtr = dataAtr
+        this.#textList = textList;
+        this.#interval = interval;
+        this.#dataAtr = dataAtr;
     }
 
     start() {
@@ -23,7 +23,7 @@ class TypeIt {
         
         setTimeout(() => {
             if (line === arr.length) {
-                clearInterval()
+                clearInterval();
                 return
             }
 
@@ -48,10 +48,7 @@ class TypeIt {
     }
 
     #render() {
-        $(`[data-typeit-${this.#dataAtr}]`).html(this.#result)
+        $(`[data-typeit-${this.#dataAtr}]`).html(this.#result);
     }
 
 }
-
-const typeIt = new TypeIt(['Забудь\nнадежду,', 200, ' всяк\nсюда\nвходящий'], 50, 'titleBg')
-typeIt.start()
