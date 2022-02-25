@@ -12,11 +12,10 @@ body {
 .readtale {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: calc(100vh - 82px);
 
     &__content {
         position: relative;
-        margin-top: 6vh;
     }
 
     &__bg-title {
