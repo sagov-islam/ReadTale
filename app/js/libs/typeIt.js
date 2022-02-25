@@ -1,9 +1,8 @@
-class TypeIt {
+export default class TypeIt {
 
     #letter = 0;
     #line = 0;
     #result = '';
-
     #props;
 
     constructor(props) {

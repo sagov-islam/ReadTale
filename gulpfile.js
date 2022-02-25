@@ -35,8 +35,9 @@ function styles() {
 
 function scripts() {
     return src(['app/js/libs/**/*.js', 'app/js/app.js'])
-        .pipe(concat('main.min.js'))
-        // .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        // .pipe(concat('main.min.js'))
+        .pipe(uglify())
         .pipe(dest('app/js/.min'))
 }
 

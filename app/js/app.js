@@ -1,4 +1,5 @@
-// const typeItTitleBg = new TypeIt(['Забудь\nнадежду,', 200, ' всяк\nсюда\nвходящий'], 50, 'titleBg');
+import TypeIt from './typeIt.min.js'
+
 const typeItTitleBg = new TypeIt({
     textList: [
         'Забудь\nнадежду,',
