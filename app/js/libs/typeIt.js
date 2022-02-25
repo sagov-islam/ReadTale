@@ -7,11 +7,13 @@ class TypeIt {
     #textList;
     #interval;
     #dataAtr;
+    #callback;
 
-    constructor(textList, interval, dataAtr) {
+    constructor(textList, interval, dataAtr, callback) {
         this.#textList = textList;
         this.#interval = interval;
         this.#dataAtr = dataAtr;
+        this.#callback = callback
     }
 
     start() {
@@ -23,6 +25,7 @@ class TypeIt {
         
         setTimeout(() => {
             if (line === arr.length) {
+                if (this.#callback) this.#callback()
                 clearInterval();
                 return
             }
