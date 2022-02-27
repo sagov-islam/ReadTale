@@ -37,8 +37,9 @@ function scripts() {
     return src(['app/js/libs/**/*.js', 'app/js/app.js'])
         .pipe(rename({ suffix: '.min' }))
         // .pipe(concat('main.min.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest('app/js/.min'))
+        .pipe(server.stream())
 }
 
 
@@ -76,7 +77,7 @@ function build() {
 function watcher() {
     watch(['app/*.html']).on('change', server.reload);
     watch(['app/scss/**/*.scss'], styles).on('change', server.reload);
-    watch(['app/js/**/*.js', '!app/js/min/**/*.js'], scripts).on('change', server.reload);
+    watch(['!app/js/.min/**/*.js', 'app/js/**/*.js'], scripts)
 }
 
 
