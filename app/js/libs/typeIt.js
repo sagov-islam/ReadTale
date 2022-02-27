@@ -1,3 +1,5 @@
+import DOMWorker from './domWorker.min.js';
+
 export default class TypeIt {
 
     #letter = 0;
@@ -35,16 +37,14 @@ export default class TypeIt {
 
             if (typeof textList[line] === 'string') {
                 this.#result += textList[line][letter];
-                this.#render();
+                
+                DOMWorker.addElement(this.#props.selector, this.#result)
+
                 this.#timeOut(this.#props.interval, line, ++letter);
                 return
             }
 
         }, time);
-    }
-
-    #render() {
-        $(`[data-typeit-${this.#props.dataAtr}]`).html(this.#result);
     }
 
 }
