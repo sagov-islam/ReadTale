@@ -30,6 +30,7 @@ function styles() {
             grid: true
         }))
         .pipe(dest('app/css'))
+        .pipe(server.stream())
 }
 
 
@@ -38,7 +39,7 @@ function scripts() {
         .pipe(rename({ suffix: '.min' }))
         // .pipe(concat('main.min.js'))
         // .pipe(uglify())
-        .pipe(dest('app/js/.min'))
+        .pipe(dest('app/scripts'))
         .pipe(server.stream())
 }
 
@@ -76,8 +77,8 @@ function build() {
 
 function watcher() {
     watch(['app/*.html']).on('change', server.reload);
-    watch(['app/scss/**/*.scss'], styles).on('change', server.reload);
-    watch(['!app/js/.min/**/*.js', 'app/js/**/*.js'], scripts)
+    watch(['app/scss/**/*.scss'], styles);
+    watch(['app/js/**/*.js'], scripts);
 }
 
 
