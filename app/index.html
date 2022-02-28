@@ -12,13 +12,13 @@
     <link rel="icon" href="images/favicons/favicon.svg" sizes="any" type="image/svg">
 </head>
 <body data-simplebar>
-        <section class="rt-loader">
-            <h2 class="rt-element-invisible">Loading</h2>
-            <div class="rt-loader__content">
-                    <div class="rt-loader__spinner"></div>
-                </div>
+    <section class="rt-loader">
+        <h2 class="rt-element-invisible">Loading</h2>
+        <div class="rt-loader__content">
+                <div class="rt-loader__spinner"></div>
             </div>
-        </section>
+        </div>
+    </section>
         <header>
             <div class="rt-header">
                 <div class="rt-container-fluid">
@@ -58,30 +58,32 @@
                 </div>
             </div> 
         </header>
-    
-        <section>
+
+        <section data-id="1">
             <h1 class="rt-element-invisible">ReadTale - Литературное сообщество</h1>
-            <div class="readtale">
-                <div class="rt-container-fluid">
-                    <div class="readtale__content">
-                        <h3><pre  class="readtale__bg-title"></pre></h3>
-                        <div class="readtale__text">
-                            <h2 class="readtale__text-title">Литературное<br>Сообщество</h2>
-                            <p class="readtale__text-description">Повседневная практика показывает, что постоянное информационно-пропаг андистское обеспечение</p>
+            <section>
+                <div class="readtale">
+                    <div class="rt-container-fluid">
+                        <div class="readtale__content">
+                            <h3><pre  class="readtale__bg-title"></pre></h3>
+                            <div class="readtale__text">
+                                <h2 class="readtale__text-title">Литературное<br>Сообщество</h2>
+                                <p class="readtale__text-description">Повседневная практика показывает, что постоянное информационно-пропаг андистское обеспечение</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </section>
         </section>
-    
-        <div class="rt-bg">
-                
-        </div>
 
-    
+        <section class="catalog">
+           <div class="filter"></div>
+        </section>
+        <div class="rt-bg"></div>
 
-    <script src="js/.min/jquery/jquery-3.6.0.min.js"></script>
-    <script type="module" src="js/.min/app.min.js"></script>
+
+    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+    <script src="scripts/simplebar.min.js"></script>
+    <script type="module" src="scripts/app.min.js"></script>
 </body>
 </html>
