@@ -1,5 +1,6 @@
 export default class DOMWorker {
 
+    // ---- STATIC ---->
     static findElementAndReturn(selector, context) {
         const elementsList = $(selector, context ? context : '');
 
@@ -19,5 +20,6 @@ export default class DOMWorker {
         
         container.html(element);
     }
+    // <---- STATIC ----
 }
 
