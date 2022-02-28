@@ -55,3 +55,18 @@ body {
         }
     }
 }
+
+.rt-bg {
+    position: absolute;
+    top: 0;
+    z-index: -100;
+    
+    width: 100vw;
+    height: 100vh;
+    
+    background-image: url('../images/bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+}
