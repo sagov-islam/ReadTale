@@ -5,3 +5,15 @@
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
 }
+
+.rt-text-center {
+    text-align: center;
+}
+
+.rt-anim {
+    &-top {
+        transform: translate(0, -20px);
+        opacity: 0;
+    }
+    
+}
