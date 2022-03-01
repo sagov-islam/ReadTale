@@ -1,0 +1,17 @@
+.rt-dropdown {
+    &__button {
+        width: 100%;
+        height: $input-height-default;
+        padding: 0 20px;
+        border-radius: $radius-default;
+        background-color: $color-dropdown-bg;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-text {
+            color: #959595;
+            font-size: $font-size-text;
+        }
+    }
+}
