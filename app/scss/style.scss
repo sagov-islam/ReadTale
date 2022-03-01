@@ -70,3 +70,9 @@ body {
     background-size: cover;
     opacity: 0.8;
 }
+
+.rt-filter {
+    grid-column: 1/6;
+    display: flex;
+    justify-content: end;
+}
