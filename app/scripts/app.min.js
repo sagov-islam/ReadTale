@@ -3,41 +3,65 @@ import HideIt from './hideIt.min.js';
 import ShowIt from './showIt.min.js';
 import DOMWorker from './domWorker.min.js';
 
+const location = window.location.pathname;
 
-$(() => {
-    HideIt.hideY('header', '-20px');
-    HideIt.hideX('.readtale__text', '-20px');
+if (location == '/index.html') {
+    $(() => {
+        HideIt.hideX('.readtale__text', '-20px');
+    
+        const spinner = new HideIt({
+            selector: '.rt-loader__content',
+            px: '50px',
+            seconds: 0.5,
+            callback: () => {
+                DOMWorker.findElementAndReturn('.rt-loader').remove();
+    
+                const header = new ShowIt({
+                    selector: 'header',
+                    seconds: 0.5,
+                    callback: () => {
+    
+                        const titleBg = new TypeIt({
+                            textList: [ 'Забудь\nнадежду,', 150, ' всяк\nсюда\nвходящий'],
+                            interval: 40,
+                            containerSelector: '.readtale__bg-title',
+                            callback: () => {  
+    
+                                const text = new ShowIt({
+                                    selector: '.readtale__text',
+                                    seconds: 0.5
+                                });
+                                text.smoothShow();
+                            }
+                        });
+                        titleBg.startTyping();
+                    }
+                })
+                header.smoothShow();
+            }
+        })  
+        spinner.smoothHideY();
+    })
+}
 
-    const spinner = new HideIt({
-        selector: '.rt-loader__content',
-        px: '50px',
-        seconds: 0.5,
-        callback: () => {
-            DOMWorker.findElementAndReturn('.rt-loader').remove();
+if (location === '/catalog.html') {
+    $(() => {
+        const spinner = new HideIt({
+            selector: '.rt-loader__content',
+            px: '50px',
+            seconds: 0.5,
+            callback: () => {
+                DOMWorker.findElementAndReturn('.rt-loader').remove();
 
-            const header = new ShowIt({
-                selector: 'header',
-                seconds: 0.5,
-                callback: () => {
-
-                    const titleBg = new TypeIt({
-                        textList: [ 'Забудь\nнадежду,', 150, ' всяк\nсюда\nвходящий'],
-                        interval: 40,
-                        containerSelector: '.readtale__bg-title',
-                        callback: () => {  
-
-                            const text = new ShowIt({
-                                selector: '.readtale__text',
-                                seconds: 0.5
-                            });
-                            text.smoothShow();
-                        }
-                    });
-                    titleBg.startTyping();
-                }
-            })
-            header.smoothShow();
-        }
-    })  
-    spinner.smoothHideY();
-})
+                const header = new ShowIt({
+                    selector: '.rt-anim-top',
+                    seconds: 0.5
+                })
+                header.smoothShow();
+            }
+        })  
+        spinner.smoothHideY();
+        
+    });
+    
+}
