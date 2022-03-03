@@ -1,6 +1,8 @@
+import ErrorChecker from "./ErrorChecker.min.js";
+
 export default class DOMWorker {
 
-    // ---- STATIC ---->
+    // STATIC ---->
     static findElementAndReturn(selector, context) {
         const elementsList = $(selector, context ? context : '');
 
@@ -11,15 +13,20 @@ export default class DOMWorker {
     static addElement(containerSelector, element) {
         const container = containerSelector ? $(`${containerSelector}`) : undefined;
 
-        if (!container)
-            throw new ReferenceError(`you have to add container for the element in the addElement()`);
-        if (container.length === 0)
-            throw new ReferenceError(`container '${containerSelector}' not found`);
-        if (!element)
-            throw new ReferenceError(`you have to add element in the addElement()`);
-        
+        ErrorChecker.domElement(container);
+        ErrorChecker.domElement(element);
+
         container.html(element);
     }
-    // <---- STATIC ----
+
+    static prepend(containerSelector, element) {
+        const container = containerSelector ? $(`${containerSelector}`) : undefined;
+
+        ErrorChecker.domElement(container);
+        ErrorChecker.domElement(element);
+
+        container.prepend(element);
+    }
+    // <---- STATIC
 }
 

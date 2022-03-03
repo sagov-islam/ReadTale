@@ -1,4 +1,4 @@
-import DOMWorker from './domWorker.min.js';
+import DOMWorker from './DomWorker.min.js';
 
 export default class TypeIt {
 
