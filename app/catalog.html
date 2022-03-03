@@ -20,74 +20,198 @@
             </div>
         </div>
     </section>
-
-    <header class="rt-anim-top">
-        <div class="rt-header">
-            <div class="rt-container-fluid">
-                <div class="rt-header__content">
-
-                    <div class="rt-header__content-left">
-                        <a class="rt-logo" href="index.html">
-                            ReadTale
-                        </a>
-                        <nav class="rt-nav rt-ml-80 rt-header__nav">
-                            <ul class="rt-nav__list">
-                                <li class="rt-nav__item">
-                                    <a class="rt-btn-link" href="#">Главная</a>
-                                </li>
-                                <li class="rt-nav__item">
-                                    <a class="rt-btn-link" href="catalog.html">Библиотека</a>
-                                </li>
-                                <li class="rt-nav__item">
-                                    <a class="rt-btn-link" href="#">О сообществе</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                
-                    <div class="rt-header__content-right">
-                        <label class="rt-input-search rt-input--size-big rt-mr-default">
-                            <input type="search" class="rt-input-search__input" aria-label="Search a book" placeholder="Поиск...">
-                            <span class="rt-input-search__img-wrapper">
-                                <svg class="rt-input-search__img" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.22 0a9.23 9.23 0 0 1 6.97 15.22l5.6 5.6a.69.69 0 1 1-.96.98l-5.61-5.6a9.23 9.23 0 1 1-6-16.2Zm0 17.06a7.85 7.85 0 1 0-.02-15.7 7.85 7.85 0 0 0 .02 15.7Z"/>
-                                </svg>
-                            </span>
-                        </label>
-                        <button class="rt-btn rt-btn--style-silver rt-btn--size-normal rt-btn--hover-rotate rt-btn--active-darker">Авторизоваться</button>
-                    </div>
-
-                </div>
-            </div>
-        </div> 
-    </header>
-       
-    <section data-page="2">
+     
+    <section class="rt-anim-top">
         <div class="rt-container-fluid">
-            <div class="rt-library rt-anim-top">
+            <div class="rt-library ">
                 <div class="rt-breadcrumbs">
-                    <button class="rt-breadcrumbs__link">Главная</button>/
+                    <a class="rt-breadcrumbs__link" href="index.html">Главная</a>/
                     <span class="rt-breadcrumbs__now">Библиотека</span>
                 </div>
                 <h1 class="rt-h1 rt-text-center rt-mb-20 rt-mt-20">Библиотека</h1>
-                <div class="rt-contaier-library">
-                    <div class="rt-filter">
-                        <span class="rt-dropdown rt-dropdown--size-normal rt-mr-default">
-                            <button class="rt-dropdown__button">
-                                <span class="rt-dropdown__button-text">Жанры</span>
-                                <img class="rt-dropdown__button-img" src="images/arrow1.svg" alt="">
-                            </button>
-                        </span>
-                        <button class="rt-btn rt-btn--style-silver rt-btn--size-normal rt-btn--active-darker">Отфильтровать</button>
-                    </div>
-                    <ul class="rt-cards-list"></ul>
+                
+                <div class="rt-filter">
+                    <span class="rt-dropdown rt-dropdown--size-normal rt-mr-default">
+                        <button class="rt-dropdown__button">
+                            <span class="rt-dropdown__button-text">Жанры</span>
+                            <img class="rt-dropdown__button-img" src="images/arrow1.svg" alt="">
+                        </button>
+                    </span>
+                    <button class="rt-btn rt-btn--style-silver rt-btn--size-normal rt-btn--ha-light-dark">Отфильтровать</button>
                 </div>
+
+                <ul class="rt-container-cards">
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="rt-card">
+                        <a href="" class="rt-card__link">
+                            <div class="rt-card__content">
+                                <div class="rt-card__image-wrapper">
+                                    <img src="images/books/1/image.jpg" alt="">
+                                    
+                                    <!-- <div class="rt-card__gradient-hover"></div> -->
+                                </div>
+                                <div class="rt-card__synopsis">
+                                    <p>
+                                        Принц Просперо с тысячей приближенных во время эпидемии скрывается в закрытом монастыре, бросив своих подданных на произвол судьбы. Монастырь всем обеспечен и изолирован, поэтому они могут не бояться заразы. Устроенный принцем бал-маскарад, настолько великолепен, что в нем приходит участвовать сама Красная Смерть...
+                                    </p>
+                                </div>
+                                <div class="rt-card__text">
+                                    <h4 class="rt-card__title">Маска красной смерти</h4>
+                                    <p class="rt-card__genres">Ужасы, Триллер</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                </ul>
+                
             </div>
         </div>
     </section>
-    <div class="rt-bg"></div>
 
     <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
     <script src="scripts/simplebar.min.js"></script>
     <script type="module" src="scripts/app.min.js"></script>
+    <script type="module" src="scripts/catalog.min.js"></script>
 </body>
 </html>
