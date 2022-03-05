@@ -35,7 +35,10 @@ function styles() {
 
 function scripts() {
     return src(['app/js/libs/**/*.js', 'app/js/*.js'])
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({
+            suffix: '.min',
+            dirname: ''
+        }))
         // .pipe(uglify())
         .pipe(dest('app/scripts'))
 }
