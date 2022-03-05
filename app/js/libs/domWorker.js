@@ -20,7 +20,7 @@ export default class DOMWorker {
     }
 
     static prepend(containerSelector, element) {
-        const container = containerSelector ? $(`${containerSelector}`) : undefined;
+        const container = containerSelector ? $(`${containerSelector}`).first() : undefined;
 
         ErrorChecker.domElement(container);
         ErrorChecker.domElement(element);
