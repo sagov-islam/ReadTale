@@ -3,7 +3,6 @@ const {src, dest, watch, parallel, series} = require('gulp');
 
 const server = require('browser-sync').create();
 const scss = require('gulp-sass')(require('sass'));
-const cssimport = require('gulp-cssimport');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const prefixer = require('gulp-autoprefixer');
@@ -11,6 +10,7 @@ const uglify = require('gulp-uglify-es').default;
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
 const imagemin = require('gulp-imagemin');
+const cssimport = require('gulp-cssimport');
 const sourcemaps = require('gulp-sourcemaps');
 
 function startServer() {
@@ -28,11 +28,11 @@ function styles() {
         .pipe(concat('style.min.css'))
         .pipe(scss({ outputStyle: 'compressed' }))
         .pipe(prefixer({
-            overrideBrowserslist: ['last 10 version'],
-            grid: true
+            overrideBrowserslist: ['last 5 version'],
+            cascade: false
         }))
-        .pipe(dest('dist/css'))
         .pipe(sourcemaps.write())
+        .pipe(dest('dist/css')) 
         .pipe(server.stream())
 }
 
@@ -73,4 +73,4 @@ function watcher() {
 }
 
 
-exports.default = parallel(startServer, watcher, html, styles, scripts, images)
+exports.default = parallel(startServer, watcher, html, styles, scripts);
