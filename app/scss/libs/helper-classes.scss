@@ -14,10 +14,23 @@
     &-top {
         transform: translate(0, -20px);
         opacity: 0;
+        &-15 {
+            transform: translate(0, -15px);
+            opacity: 0;
+        }
     }
 
     &-left {
         transform: translate(-20px, 0);
         opacity: 0;
     }
+
+    &-rotate {
+        transition: .1s;
+        transform: rotate(180deg);
+    }
+}
+
+.rt-hide {
+    display: none;
 }
