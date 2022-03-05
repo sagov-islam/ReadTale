@@ -8,8 +8,8 @@ export default class HideIt {
         this.#props.element = DOMWorker.findElementAndReturn(props.selector);
     }
 
-    // ---- PUBLIC ---->
-
+    // PUBLIC ---->
+    
     smoothHideX() {
         this.#props.element.css({
             'transition': `${this.#props.seconds}s`,
@@ -32,29 +32,6 @@ export default class HideIt {
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
     }
     
-    // <---- PUBLIC ----
-
-    
-    // ---- STATIC ---->
-
-    static hideY(selector, px) {
-        const element = DOMWorker.findElementAndReturn(selector);
-
-        element.css({
-            'transform': `translate(0, ${px})`,
-            'opacity': '0'
-        });
-    }
-
-    static hideX(selector, px) {
-        const element = DOMWorker.findElementAndReturn(selector);
-
-        element.css({
-            'transform': `translate(${px}, 0)`,
-            'opacity': '0'
-        });
-    }
-
-    // <---- STATIC ----
+    // <---- PUBLIC 
 
 }
