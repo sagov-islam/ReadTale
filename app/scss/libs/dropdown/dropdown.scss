@@ -1,5 +1,7 @@
 .rt-dropdown {
-    &__button {
+    position: relative;
+    
+    &__button {     
         width: 100%;
         height: $input-height-default;
         padding: 0 20px;
@@ -13,5 +15,57 @@
             color: #959595;
             font-size: $font-size-text;
         }
+
+        &-img {
+            transform-origin: 50% 45% 0;
+            transition: .1s;
+        }
+        
     }
+
+    &__list {
+        z-index: 20;
+        position: absolute;
+        margin-top: 18px;
+        background-color: #313131;
+        border-radius: $radius-default;
+        box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+        min-width: 120%;
+        max-height: 230px;
+        padding: 5px 0;
+    }
+
+    &__item {
+        cursor: pointer;
+        height: 45px;
+        
+
+        &:hover {
+            background-color: #252525;
+            border-left: 1px solid $color-orange;
+
+            .rt-checkbox p { margin-left: -1px; }  
+        }
+
+        .rt-checkbox {
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+            padding: 0 25px 0 15px;
+            flex: 1;
+            color: #959595;
+            font-size: 1.5rem;
+            
+            line-height: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }  
+    }
+
+    .simplebar-track.simplebar-vertical {
+        margin-right: 6px;
+    }
+
+    
 }
