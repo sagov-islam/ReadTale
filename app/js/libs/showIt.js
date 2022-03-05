@@ -1,4 +1,5 @@
 import DOMWorker from "./DomWorker.min.js";
+import { visible } from './variables.min.js';
 
 export default class ShowIt {
 
@@ -11,11 +12,7 @@ export default class ShowIt {
     // ---- PUBLIC ---->
 
     smoothShow() {
-        this.#props.element.css({
-            'transition': `${this.#props.seconds}s`,
-            'transform': `translate(0, 0)`,
-            'opacity': '1'
-        });
+        this.#props.element.css(visible);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
