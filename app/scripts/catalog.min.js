@@ -1,7 +1,8 @@
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import DOMWorker from './DomWorker.min.js';
-import ReturnHTML from './ReturnHTML.min.js'
+import ReturnHTML from './ReturnHTML.min.js';
+import DropDown from './DropDown.min.js';
 
 $(() => {
 
@@ -13,11 +14,32 @@ $(() => {
             DOMWorker.findElementAndReturn('.rt-loader').remove();
 
             const catalog = new ShowIt({
-                selector: '.rt-anim-top',
+                selector: 'header, section',
                 seconds: 0.5
             })
             catalog.smoothShow();
         }
     })  
     spinner.smoothHideY();
+
+    
+
+    const dropDownGenres = new DropDown({
+        dataAtr: 'genres',
+        classes: ['rt-mr-default'],
+        size: 'normal',
+        transition: 0.1,
+        title: 'Жанры',
+        list: [
+            'Приключения',
+            'Детектив',
+            'Ужасы',
+            'Триллер',
+            'Комедия',
+            'Драма'
+        ]
+    })
+    dropDownGenres.create();
+
+
 });

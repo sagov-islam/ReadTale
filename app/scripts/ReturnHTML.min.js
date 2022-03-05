@@ -42,5 +42,27 @@ export default class ReturnHTML {
         </div> 
     </header>`
     }
+
+    static dropdown(props) {
+        return `<button class="rt-dropdown__button" data-dropdown=${props.dataAtr}>
+                    <span class="rt-dropdown__button-text" data-dropdown=${props.dataAtr}>${props.title}</span>
+                     <img class="rt-dropdown__button-img" src="images/arrow1.svg" alt="" data-dropdown=${props.dataAtr}>
+                </button>
+                <ul class="rt-dropdown__list" style="transform: translate(0, -15px); opacity: 0; visibility: hidden;" data-simplebar data-dropdown=${props.dataAtr}>
+                    ${props.list.join('\n')}
+                </ul>
+                `
+    }
+
+    static dropdownItem(props) {
+        return `<li class="rt-dropdown__item" data-dropdown=${props.dataAtr}>
+                    <label class="rt-checkbox" data-dropdown=${props.dataAtr}>
+                        <p data-dropdown=${props.dataAtr}>${props.title}</p>
+                        <input class="rt-checkbox__input" type="checkbox" data-dropdown=${props.dataAtr}>
+                        <span class="rt-checkbox__style" data-dropdown=${props.dataAtr}>
+                    </label>
+                </li>
+                `
+    }
     // <---- STATIC
 }

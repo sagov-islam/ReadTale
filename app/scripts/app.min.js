@@ -3,5 +3,5 @@ import ReturnHTML from './ReturnHTML.min.js'
 
 $(() => {
     // HEADER:
-    DOMWorker.prepend('.simplebar-content', ReturnHTML.header());
+    DOMWorker.prepend('body > .simplebar-wrapper .simplebar-content', ReturnHTML.header());
 });
