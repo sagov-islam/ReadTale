@@ -35,7 +35,7 @@ export default class DropDownEventListener extends EventListener {
                 arrorw.removeClass('rt-anim-rotate');
                 return
             }
-            
+
             list.css(visible);
             dropdown.addClass('focus');
             arrorw.addClass('rt-anim-rotate');  

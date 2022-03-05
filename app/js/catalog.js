@@ -1,7 +1,6 @@
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import DOMWorker from './DomWorker.min.js';
-import ReturnHTML from './ReturnHTML.min.js';
 import DropDown from './DropDown.min.js';
 
 $(() => {
@@ -28,7 +27,7 @@ $(() => {
         dataAtr: 'genres',
         classes: ['rt-mr-default'],
         size: 'normal',
-        transition: 0.1,
+        transition: 0.2,
         title: 'Жанры',
         list: [
             'Приключения',

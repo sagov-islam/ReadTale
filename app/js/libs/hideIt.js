@@ -1,4 +1,5 @@
 import DOMWorker from './DomWorker.min.js';
+import { visible, invisible } from './variables.min.js';
 
 export default class HideIt {
 
@@ -22,11 +23,11 @@ export default class HideIt {
     }
 
     smoothHideY() {
-        this.#props.element.css({
-            'transition': `${this.#props.seconds}s`,
-            'transform': `translate(0, ${this.#props.px})`,
-            'opacity': '0'
-        });
+        const hide = {...invisible};
+        hide.transition = `${this.#props.seconds}s`;
+        hide.transform = `translate(0, ${this.#props.px})`;
+        
+        this.#props.element.css(invisible);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));

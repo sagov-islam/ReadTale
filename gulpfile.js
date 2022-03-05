@@ -11,11 +11,12 @@ const uglify = require('gulp-uglify-es').default;
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
 const imagemin = require('gulp-imagemin');
+const sourcemaps = require('gulp-sourcemaps');
 
 function startServer() {
     server.init({
         server: {
-            baseDir: 'app'
+            baseDir: 'dist/'
         },
         notify: false
     })
@@ -23,64 +24,53 @@ function startServer() {
 
 function styles() {
     return src(['app/scss/variables.scss', 'app/scss/reboot.scss' , 'app/scss/**/*.scss'])
+        .pipe(sourcemaps.init())
         .pipe(concat('style.min.css'))
         .pipe(scss({ outputStyle: 'compressed' }))
         .pipe(prefixer({
             overrideBrowserslist: ['last 10 version'],
             grid: true
         }))
-        .pipe(dest('app/css'))
+        .pipe(dest('dist/css'))
+        .pipe(sourcemaps.write())
+        .pipe(server.stream())
 }
 
 
 function scripts() {
-    return src(['app/js/libs/**/*.js', 'app/js/*.js'])
+    return src(['app/js/libs/**/*.js', 'app/js/**/*.js'])
+        .pipe(sourcemaps.init())
         .pipe(rename({
             suffix: '.min',
             dirname: ''
         }))
-        // .pipe(uglify())
-        .pipe(dest('app/scripts'))
-}
-
-
-function deleteDist() {
-    return del('dist')
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(dest('dist/js/'))
 }
 
 
 function html() {
     return src('app/*.html')
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.init())
         .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(dest('dist'))
+        .pipe(sourcemaps.write())
+        .pipe(dest('dist/'))
 }
 
 
 function images() {
-    return src( 'app/images/**/*.+(jpg|svg|png)', { base: 'app/images' })
-    .pipe(imagemin({
-        verbose: true
-    }))
+    return src( 'app/images/**/*.+(jpg|svg|png)')
     .pipe(dest('dist/images'))
 }
 
 
-function build() {
-    return src([
-        'app/css/style.min.css',
-        'app/js/min/'
-    ], {base: 'app'})
-    .pipe(dest('dist/'))
-}
-
-
 function watcher() {
-    watch(['app/*.html']).on('change', server.reload);
-    watch(['app/scss/**/*.scss'], styles).on('change', server.reload);
+    watch(['app/*.html'], html).on('change', server.reload);
+    watch(['app/scss/**/*.scss'], styles)
     watch(['app/js/**/*.js'], scripts).on('change', server.reload);
+    watch(['app/images/**/*.+(jpg|svg|png)'], images).on('change', server.reload);
 }
 
 
-exports.build = series(deleteDist, build, html, images)
-exports.default = parallel(startServer, styles, scripts, watcher)
+exports.default = parallel(startServer, watcher, html, styles, scripts, images)

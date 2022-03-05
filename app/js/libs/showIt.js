@@ -12,7 +12,10 @@ export default class ShowIt {
     // ---- PUBLIC ---->
 
     smoothShow() {
-        this.#props.element.css(visible);
+        const show = {...visible}
+        show.transition =`${this.#props.seconds}s`;
+
+        this.#props.element.css(show);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));

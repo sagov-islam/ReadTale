@@ -1,6 +1,5 @@
 import DOMWorker from './DomWorker.min.js';
 import ReturnHTML from './ReturnHTML.min.js';
-import { visible } from './variables.min.js';
 import DropDownEventListener from './DropDownEventListener.min.js';
 
 export default class DropDown {
