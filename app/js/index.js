@@ -1,7 +1,7 @@
 import TypeIt from './TypeIt.min.js';
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
-import DOMWorker from './/DomWorker.min.js';
+import DOMWorker from './DomWorker.min.js';
 
 $(() => {
     const spinner = new HideIt({
