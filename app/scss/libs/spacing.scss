@@ -15,6 +15,12 @@
         &-20 {
             margin-top: 20px;
         }
+        &-80 {
+            margin-top: 80px;
+        }
+        &-default {
+            margin-top: $spacing-default;
+        }
     }
     &b {
         &-20 {
