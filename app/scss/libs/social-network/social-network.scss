@@ -1,0 +1,22 @@
+.rt-social-network {
+    svg {
+        transition: fill .2s, transform .2s;
+        width: 32px;
+        height: 32px;
+        fill: #505050;
+    }
+
+    &:hover {
+        svg {
+            fill: $color-orange;
+            transform: scale(1.2);
+        }
+    }
+
+    &-list {
+        display: flex;
+        li:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+}
