@@ -10,8 +10,8 @@ const uglify = require('gulp-uglify-es').default;
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
 const imagemin = require('gulp-imagemin');
-const cssimport = require('gulp-cssimport');
 const sourcemaps = require('gulp-sourcemaps');
+const include = require('gulp-file-include');
 
 function startServer() {
     server.init({
@@ -53,11 +53,16 @@ function scripts() {
 function html() {
     return src('app/*.html')
         .pipe(sourcemaps.init())
+        .pipe(include())
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(sourcemaps.write())
         .pipe(dest('dist/'))
 }
 
+function json() {
+    return src(['app/database/**/*.json'], {base: 'app'})
+    .pipe(dest('dist/'))
+}
 
 function images() {
     return src( 'app/images/**/*.+(jpg|svg|png)')
@@ -66,11 +71,12 @@ function images() {
 
 
 function watcher() {
-    watch(['app/*.html'], html).on('change', server.reload);
+    watch(['app/html/**/*.html', 'app/*.html'], html).on('change', server.reload);
     watch(['app/scss/**/*.scss'], styles)
     watch(['app/js/**/*.js'], scripts).on('change', server.reload);
     watch(['app/images/**/*.+(jpg|svg|png)'], images).on('change', server.reload);
+    watch(['app/database/**/*.json'], json).on('change', server.reload);
 }
 
 
-exports.default = parallel(startServer, watcher, html, styles, scripts);
+exports.default = parallel(startServer, watcher, series( styles, html, json, scripts));
