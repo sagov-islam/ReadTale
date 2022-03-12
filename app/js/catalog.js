@@ -37,7 +37,7 @@ $(() => {
         dataAtr: 'genres',
         classes: ['rt-mr-default'],
         buttonSize: 'normal',
-        listSize: '120%',
+        listSize: '135%',
         transition: 0.2,
         title: 'Жанры',
         inputName: 'checkbox',
