@@ -2,7 +2,6 @@
     position: relative;
     
     &__button {     
-        width: 100%;
         height: $input-height-default;
         padding: 0 20px;
         border-radius: $radius-default;
@@ -44,10 +43,11 @@
             background-color: #252525;
             border-left: 1px solid $color-orange;
 
-            .rt-checkbox p { margin-left: -1px; }  
+            .rt-checkbox p { margin-left: -1.5px; }  
+            .rt-radio p { margin-left: -1.5px; }  
         }
 
-        .rt-checkbox {
+        .rt-checkbox, .rt-radio {
             cursor: pointer;
             height: 100%;
             width: 100%;

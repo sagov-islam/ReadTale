@@ -12,9 +12,11 @@
 
 .rt-anim {
     &-top {
+        visibility: hidden;
         transform: translate(0, -20px);
         opacity: 0;
         &-15 {
+            visibility: visible;
             transform: translate(0, -15px);
             opacity: 0;
         }
@@ -33,4 +35,11 @@
 
 .rt-hide {
     display: none;
+}
+
+.rt-y-sb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
