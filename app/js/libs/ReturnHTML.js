@@ -44,11 +44,11 @@ export default class ReturnHTML {
     }
 
     static dropdown(props) {
-        return `<button class="rt-dropdown__button" data-dropdown=${props.dataAtr}>
+        return `<button class="rt-dropdown__button ${props.buttonSize}" data-dropdown=${props.dataAtr}>
                     <span class="rt-dropdown__button-text" data-dropdown=${props.dataAtr}>${props.title}</span>
                      <img class="rt-dropdown__button-img" src="images/arrow1.svg" alt="" data-dropdown=${props.dataAtr}>
                 </button>
-                <ul class="rt-dropdown__list" style="transform: translate(0, -15px); opacity: 0; visibility: hidden;" data-simplebar data-dropdown=${props.dataAtr}>
+                <ul class="rt-dropdown__list" style="transform: translate(0, -15px); opacity: 0; visibility: hidden; min-width: ${props.listSize}" data-simplebar data-dropdown=${props.dataAtr}>
                     ${props.list.join('\n')}
                 </ul>
                 `
@@ -56,13 +56,53 @@ export default class ReturnHTML {
 
     static dropdownItem(props) {
         return `<li class="rt-dropdown__item" data-dropdown=${props.dataAtr}>
+                    
+                    ${props.inputName === 'checkbox'
+                    ?
+                    `
                     <label class="rt-checkbox" data-dropdown=${props.dataAtr}>
                         <p data-dropdown=${props.dataAtr}>${props.title}</p>
-                        <input class="rt-checkbox__input" type="checkbox" data-dropdown=${props.dataAtr}>
-                        <span class="rt-checkbox__style" data-dropdown=${props.dataAtr}>
+                        <input class="rt-checkbox__input" type="checkbox" data-dropdown=${props.dataAtr} name="${props.dataAtr}" value="${props.title}">
+                        <span class="rt-checkbox__style" data-dropdown=${props.dataAtr}></span>
                     </label>
+                    `
+                    :
+                    `
+                    <label class="rt-radio" data-dropdown=${props.dataAtr}>
+                        <p data-dropdown=${props.dataAtr}>${props.title}</p>
+                        <input class="rt-radio__input" type="radio" data-dropdown=${props.dataAtr} name="${props.dataAtr}" value="${props.title}">
+                        <span class="rt-radio__style" data-dropdown=${props.dataAtr}></span>
+                    </label>
+                    `
+                    }
+                    
                 </li>
                 `
+    }
+
+
+    static card(props) {
+        return `
+        <li class="rt-card rt-anim-top">
+            <a href="" class="rt-card__link">
+                <div class="rt-card__content">
+                    <div class="rt-card__image-wrapper">
+                        <img src="${props.image}" alt="${props.name}">
+                    </div>
+                    <div class="rt-card__synopsis">
+                        <p>
+                            ${props.synopsis}
+                        </p>
+                    </div>
+                    <div class="rt-card__text">
+                        <h4 class="rt-card__title">${props.name}</h4>
+                        <p class="rt-card__genres">${props.genres.join(', ')}</p>
+                    </div>
+                </div>
+            </a>
+        </li>
+        
+        `
     }
     // <---- STATIC
 }
