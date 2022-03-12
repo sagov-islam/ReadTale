@@ -11,4 +11,7 @@
     &-big {
         min-width: $input-width-big;
     }
+    &-fluid {
+        width: 100%;
+    }
 }
