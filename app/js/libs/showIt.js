@@ -21,6 +21,22 @@ export default class ShowIt {
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
 
     }
+
+    static smoothShowCards(indexes, seconds, ms) {
+        const cards = $('.rt-card');
+        let start = indexes.start;
+        let end = indexes.end;
+
+        const interval = setInterval(() => {
+            if (start === end) clearInterval(interval);
+
+            const show = {...visible};
+            show.transition =`${seconds}s`;
+            $(cards[start]).css(show);
+
+            start++;
+        }, ms)
+    }
     
     // <---- PUBLIC ----
 }
