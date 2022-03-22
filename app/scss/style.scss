@@ -77,3 +77,36 @@ body {
     justify-content: end;
     margin-bottom: $spacing-default;
 }
+
+.rt-add-comment {
+    border-left: 1px solid #494949;
+    padding: 15px 0px 0px 25px;
+    margin-top: 30px;
+    
+    textarea {
+        border-radius: $radius-default;
+        background-color: $input-color-bg;
+        line-height: 25px;
+        display: block;
+        resize: vertical;
+        width: 100%;
+        min-height: 128px;
+        padding: 14px 16px;
+        overflow: hidden;
+        font-size: $font-size-text;
+        color: $input-color-text;
+
+        transition: height .2s;
+        &:focus {
+            color: $color-white;
+            border-color: #4e4e4e;
+        }
+
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    
+}
