@@ -2,19 +2,22 @@ import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import DOMWorker from './DomWorker.min.js';
 import DropDown from './DropDown.min.js';
-import Books from './Books.min.js';
 import Filter from './Filter.min.js'
+import Slicer from './Slicer.min.js';
+
 
 $(() => {
-    const books = new Books('.rt-container-cards');
+    const slicer = new Slicer();
     const filter = new Filter({
         sorting: ['Сначала самые высокооцененные'],
         genres: 'Все жанры',
         callback: sortedBooksInfo => {
-            books.booksInfo = sortedBooksInfo
-            books.container.html('');
-            books.addSlicedCards();
-            ShowIt.smoothShowCards(books.indexes, 0.1, 100)
+            slicer.data = sortedBooksInfo;
+            slicer.indexes = { start: 0, end: 10 };
+
+            $('.rt-container-cards').html('');
+            slicer.addSlicedBooks('.rt-container-cards');
+            ShowIt.smoothShowSlicedElements('.rt-card', slicer.indexes, 0.1);
         }
     })
 
@@ -32,6 +35,32 @@ $(() => {
         }
     })  
     spinner.smoothHideY();
+
+    
+    $('button#filter').on('click', () => {
+        const selectedGenres = dropDownGenres.selectedInputs;
+        const selectedSorting = dropDownSorting.selectedInputs;
+
+        filter.props = {
+            sorting: selectedSorting,
+            genres: selectedGenres,
+            callback: sortedBooksInfo => {
+                slicer.data = sortedBooksInfo;
+                slicer.indexes = { start: 0, end: 10 };
+                
+                $('.rt-container-cards').html('');
+                slicer.addSlicedBooks('.rt-container-cards');
+                ShowIt.smoothShowSlicedElements('.rt-card', slicer.indexes, 0.1);
+            }
+        };
+        filter.sort();  
+    });
+
+    $('button#show-more-books').on('click', () => {
+        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 10 };
+        slicer.addSlicedBooks('.rt-container-cards');
+        ShowIt.smoothShowSlicedElements('.rt-card', slicer.indexes, 0.1);
+    });
 
     const dropDownGenres = new DropDown({
         dataAtr: 'genres',
@@ -69,7 +98,7 @@ $(() => {
         dataAtr: 'sorting',
         classes: ['rt-mr-default'],
         buttonSize: 'normal',
-        listSize: '190%',
+        listSize: '210%',
         transition: 0.2,
         title: 'Сортировка',
         inputName: 'radio',
@@ -79,36 +108,4 @@ $(() => {
         ]
     })
     dropDownSorting.create();
-    
-    $('button#filter').on('click', () => {
-        const selectedGenres = dropDownGenres.selectedInputs;
-        const selectedSorting = dropDownSorting.selectedInputs;
-
-        filter.props = {
-            sorting: selectedSorting,
-            genres: selectedGenres,
-            callback: sortedBooksInfo => {
-                books.booksInfo = sortedBooksInfo;
-                books.container.html('');
-                books.indexes = {start: 0, end: 10};
-                books.addSlicedCards();
-                ShowIt.smoothShowCards(books.indexes, 0.1, 100);
-            }
-        };
-        filter.sort();  
-    });
-
-    $('button#showMore').on('click', () => { 
-        
-        books.indexes = {
-            start: books.indexes.end,
-            end: books.indexes.end += 10
-        }
-        books.addSlicedCards();
-        ShowIt.smoothShowCards(books.indexes, 0.1, 100);
-
-        if (books.indexes.end >= books.booksInfo.length) {
-            $('button#showMore').addClass('rt-hide');
-        } 
-    });
 });
