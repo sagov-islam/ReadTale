@@ -6,7 +6,7 @@ export default class ShowIt {
     #props
     constructor(props) {
         this.#props = props;
-        this.#props.element = DOMWorker.findElementAndReturn(props.selector);
+        this.#props.element = $(props.selector);
     }
 
     // ---- PUBLIC ---->
@@ -15,15 +15,15 @@ export default class ShowIt {
         const show = {...visible}
         show.transition =`${this.#props.seconds}s`;
 
-        this.#props.element.css(show);
+        $(this.#props.element).css(show);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
 
     }
 
-    static smoothShowCards(indexes, seconds, ms) {
-        const cards = $('.rt-card');
+    static smoothShowSlicedElements(elementsSelector, indexes, seconds) {
+        const cards = $(elementsSelector);
         let start = indexes.start;
         let end = indexes.end;
 
@@ -35,7 +35,7 @@ export default class ShowIt {
             $(cards[start]).css(show);
 
             start++;
-        }, ms)
+        }, 100)
     }
     
     // <---- PUBLIC ----
