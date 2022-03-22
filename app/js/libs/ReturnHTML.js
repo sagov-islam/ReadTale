@@ -84,7 +84,7 @@ export default class ReturnHTML {
     static card(props) {
         return `
         <li class="rt-card rt-anim-top">
-            <a href="" class="rt-card__link">
+            <a href="./book.html" class="rt-card__link">
                 <div class="rt-card__content">
                     <div class="rt-card__image-wrapper">
                         <img src="${props.image}" alt="${props.name}">
@@ -102,6 +102,29 @@ export default class ReturnHTML {
             </a>
         </li>
         
+        `
+    }
+
+    static textarea() {
+        return `
+        <form class="rt-add-comment rt-anim-top">
+            <textarea name="comment" rows="4" required placeholder="Введите комментарий"></textarea>
+            <button type="submit" class="rt-comment__btn" id="btn-add-comment">Оставить комментарий</button>
+         </form>
+        `
+    }
+
+    static comment(props) {
+        return `
+        <li class="rt-comment rt-anim-top ${props.classes ? props.classes.join(' ') : ''}">
+            <div class="rt-comment__user">
+                <img class="rt-comment__img" width="40" height="40" src="${props.img}" alt="${props.name}">
+                <span class="rt-comment__nickname">${props.name}</span>
+                <span class="rt-comment__date">${props.date}</span>
+            </div>
+            <p class="rt-comment__text rt-text">${props.text}</p>
+            <button class="rt-comment__btn">Ответить</button>
+        </li>
         `
     }
     // <---- STATIC
