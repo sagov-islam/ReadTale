@@ -38,6 +38,9 @@
         cursor: pointer;
         height: 45px;
         
+        p {
+            font-size: $font-size-text;
+        }
 
         &:hover {
             background-color: #252525;
