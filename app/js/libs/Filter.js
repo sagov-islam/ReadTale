@@ -1,14 +1,10 @@
 import Fetcher from './Fetcher.min.js'
-import DOMWorker from './DomWorker.min.js';
-import ReturnHTML from './ReturnHTML.min.js';
 
 export default class Filter {
     #Fetcher = new Fetcher();
     
     constructor(props) {
         this.props = props
-
-
     }
 
     // PUBLIC ---->
