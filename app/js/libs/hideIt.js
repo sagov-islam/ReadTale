@@ -1,12 +1,11 @@
-import DOMWorker from './DomWorker.min.js';
-import { visible, invisible } from './variables.min.js';
+import { invisible } from './variables.min.js';
 
 export default class HideIt {
 
     #props;
     constructor(props) {
         this.#props = props;
-        this.#props.element = DOMWorker.findElementAndReturn(props.selector);
+        this.#props.element = $(props.selector);
     }
 
     // PUBLIC ---->
@@ -26,8 +25,8 @@ export default class HideIt {
         const hide = {...invisible};
         hide.transition = `${this.#props.seconds}s`;
         hide.transform = `translate(0, ${this.#props.px})`;
-        
-        this.#props.element.css(invisible);
+
+        this.#props.element.css(hide);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
