@@ -1,0 +1,28 @@
+.rt-chapter {
+
+    &__link {
+        display: flex;
+        align-items: center;
+        font-size: $font-size-text;
+        width: 100%;
+        padding: 25px 20px;
+        transition: background-color .1s;
+        border-bottom: 1px solid #272727;
+
+        &:hover {
+            background-color: #272727;
+        }
+    }
+
+    &__name {
+        font-size: $font-size-text;
+        transition: .2s;
+        color: #A6A6A6;
+    }
+
+    &__num {
+        font-size: $font-size-text;
+        color: #A6A6A6;
+        margin-right: 20px;
+    }
+}
