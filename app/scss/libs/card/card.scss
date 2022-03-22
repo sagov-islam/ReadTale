@@ -59,7 +59,7 @@
         transition: color .4s;
         margin-top: 10px;
         font-family: $inter;
-        font-size: 1.3rem;
+        font-size: calc($font-size-text - 3px) ;
         line-height: 1.8rem;
         color: #A6A6A6;
     }
