@@ -56,7 +56,6 @@ export default class ReturnHTML {
 
     static dropdownItem(props) {
         return `<li class="rt-dropdown__item" data-dropdown=${props.dataAtr}>
-                    
                     ${props.inputName === 'checkbox'
                     ?
                     `
@@ -107,7 +106,7 @@ export default class ReturnHTML {
 
     static textarea() {
         return `
-        <form class="rt-add-comment rt-anim-top">
+        <form class="rt-textarea rt-anim-top">
             <textarea name="comment" rows="4" required placeholder="Введите комментарий"></textarea>
             <button type="submit" class="rt-comment__btn" id="btn-add-comment">Оставить комментарий</button>
          </form>
@@ -125,6 +124,77 @@ export default class ReturnHTML {
             <p class="rt-comment__text rt-text">${props.text}</p>
             <button class="rt-comment__btn">Ответить</button>
         </li>
+        `
+    }
+
+    static input(props) {
+        return `
+        <input class="rt-modal__input rt-input-text rt-input-text--size-fluid" type="${props.type}" name="${props.name}" placeholder="${props.placeholder}" autocomplete="${props.autocomplete ? 'on' : 'off' }">
+
+        `
+    }
+
+    static modalInner(props) {
+        return `
+        <h3 class="rt-modal__title rt-text-center">${props.title}</h3>
+        <form action="" class="rt-modal__form">
+            <ul>
+                ${props.inputs.join('')}
+            </ul>
+            ${
+                props.agreement ?
+                `
+                    <div class="rt-modal__agreement">
+                        <label class="rt-checkbox">
+                            <input class="rt-checkbox__input" type="checkbox">
+                            <span class="rt-checkbox__style"></span>
+                            <p>Я согласен на обработку персональных данных</p>
+                        </label>
+                    </div>
+                `
+                : ''
+            }
+            
+            <button type="submit" class="rt-modal__main-btn rt-btn rt-btn--size-fluid rt-btn--style-orange">${props.btnText}</button>
+        </form>
+        `
+    }
+
+    static grade() {
+        return `
+            <ul class="rt-stars rt-mr-default">
+                <li class="rt-stars__item" id="0">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="1">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="2">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="3">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="4">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="5">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="6">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="7">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="8">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                <li class="rt-stars__item" id="9">
+                        <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+            </ul>
+        
         `
     }
     // <---- STATIC
