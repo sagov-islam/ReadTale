@@ -8,6 +8,7 @@ export default class Slicer {
         this.indexes = indexes
     }
 
+    // PUBLIC ---->
     addSlicedComments(containerSelector) {
         const container = $(containerSelector);
         const comments = this.data.slice(this.indexes.start, this.indexes.end);
@@ -51,4 +52,5 @@ export default class Slicer {
         if (this.data.length > 5) $('button#show-more-books').show();
         if (this.indexes.end >= this.data.length) $('button#show-more-books').hide();
     }
+    // <---- PUBLIC
 }

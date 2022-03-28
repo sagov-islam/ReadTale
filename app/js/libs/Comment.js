@@ -8,7 +8,8 @@ export default class Comment {
         this.props = props
 
     }
-
+    
+    // PUBLIC ---->
     eventAddTextarea() {
         $('.rt-comment .rt-comment__btn').each((index, btn) => {
             const parent = $(btn).parent();
@@ -32,16 +33,6 @@ export default class Comment {
                 
                 this.eventAddComment($('.rt-comment button#btn-add-comment'));
             })
-        })
-    }
-
-    static dynamicTextareaHeight() {
-        const textarea = $('.rt-textarea textarea');
-        textarea.on('input', () => {
-            if ( ! $(textarea).scrollTop() > 0) return
-            $(textarea).css({
-                height: `${$(textarea).prop('scrollHeight')}px`
-            }) 
         })
     }
 
@@ -69,5 +60,18 @@ export default class Comment {
         })
         
     }
+    // <---- PUBLIC
+
+    // STATIC ---->
+    static dynamicTextareaHeight() {
+        const textarea = $('.rt-textarea textarea');
+        textarea.on('input', () => {
+            if ( ! $(textarea).scrollTop() > 0) return
+            $(textarea).css({
+                height: `${$(textarea).prop('scrollHeight')}px`
+            }) 
+        })
+    }
+    // <---- STATIC
 
 }

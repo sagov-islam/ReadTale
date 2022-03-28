@@ -8,6 +8,7 @@ export default class Modal {
         this.props = props;
     }
 
+    // PUBLIC ---->
     create() {
         const props = this.props;
         const modal = this.#returnModal();
@@ -29,7 +30,9 @@ export default class Modal {
         this.#eventOpenModal(modal);
         this.#eventWindowClick(modal);
     }
+    // <---- PUBLIC
 
+    // PRIVATE ---->
     #returnModal() {
         const props = this.props;
 
@@ -120,7 +123,6 @@ export default class Modal {
     }
 
     #hide(modal) {
-        // $('body > .simplebar-vertical').first().show();
         new HideIt({
             selector: modal,
             seconds: 0.2,
@@ -133,5 +135,7 @@ export default class Modal {
             px: '0px',
         }).smoothHideY();
     }
+
+    // < ---- PRIVATE
 
 }
