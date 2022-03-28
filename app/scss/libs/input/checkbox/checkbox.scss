@@ -1,4 +1,6 @@
 .rt-checkbox {
+    cursor: pointer;
+    display: flex;
     &__input {
         position: absolute;
         width: 1px;

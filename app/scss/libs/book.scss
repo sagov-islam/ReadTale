@@ -53,7 +53,15 @@
                 min-width: 118px;
                 border-radius: $radius-default;
                 height: 40px;
-                padding: 0 12px;
+                padding: 0 19px 0 12px;
+
+                &:hover {
+                    background-color: #363636;
+                }
+    
+                &:active {
+                        background-color: #313131;
+                }
 
                 svg {
                     transition: fill .2s;
@@ -65,20 +73,6 @@
             }
         }
 
-        &-stars {
-            display: flex;
-
-            &__item {
-        
-                &:not(:last-child) {
-                    margin-right: 8px;
-                }
-        
-                svg {
-                    fill: #444;
-                }
-            }
-        }
     }
 }
 
