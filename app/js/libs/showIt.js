@@ -6,7 +6,7 @@ export default class ShowIt {
     #props
     constructor(props) {
         this.#props = props;
-        this.#props.element = $(props.selector);
+        this.#props.element = $(props.selector, props.context ? props.context : '');
     }
 
     // ---- PUBLIC ---->
