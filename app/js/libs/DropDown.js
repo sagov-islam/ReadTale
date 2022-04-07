@@ -4,19 +4,17 @@ import DropDownEventListener from './DropDownEventListener.min.js';
 
 export default class DropDown {
     
-    #props;
-    #dropdown;
 
     constructor(props) {
-        this.#props = props;
-        this.#dropdown = DOMWorker.findElementAndReturn(`[data-dropdown=${props.dataAtr}]`);
+        this.props = props;
+        this.dropdown = $(`[data-dropdown=${props.dataAtr}]`);
         this.selectedInputs = [];
     }
 
     // PUBLIC ---->
     create() {
-        const dropdown = this.#dropdown;
-        const props = this.#props;
+        const dropdown = this.dropdown;
+        const props = this.props;
         const listSize = props.listSize ?  props.listSize : '120%';
         const buttonSize = 'rt-dropdown-button--size-' + (props.buttonSize === 'big' ? 'big' : props.buttonSize === 'small' ? 'small' : 'normal');
         
@@ -38,16 +36,23 @@ export default class DropDown {
             listSize: listSize
         }));
 
-        const inputs = DOMWorker.findElementAndReturn(`.rt-${props.inputName}__input`, dropdown);
-        $(inputs).on('click', () => { this.#updateSelectedInputs() })
-
+        
+        
         DropDownEventListener.closeIfClickWindow(dropdown);
         DropDownEventListener.openIfClickButton(dropdown, props.transition);
+        
+        if (props.callback) {
+            props.callback(dropdown);
+            return
+        }
+
+        const inputs = $(`.rt-${props.inputName}__input`, dropdown);
+        $(inputs).on('click', () => { this.#updateSelectedInputs() })
     }
 
     #updateSelectedInputs() {
         this.selectedInputs = [];
-        const inputs = DOMWorker.findElementAndReturn(`.rt-${this.#props.inputName}__input`, this.#dropdown);
+        const inputs = $(`.rt-${this.props.inputName}__input`, this.dropdown);
         
         inputs.each((index, input) => {
             if ($(input).is(':checked')) this.selectedInputs.push(input.value);

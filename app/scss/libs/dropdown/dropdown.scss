@@ -37,9 +37,20 @@
     &__item {
         cursor: pointer;
         height: 45px;
-        
         p {
             font-size: $font-size-text;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            padding: 0 25px 0 15px;
+
+            height: 100%;
+            width: 100%;
+            color: #959595;
+            font-size: 1.5rem;
+            line-height: 25px;   
         }
 
         &:hover {
@@ -48,13 +59,15 @@
 
             .rt-checkbox p { margin-left: -1.5px; }  
             .rt-radio p { margin-left: -1.5px; }  
+            button {  padding-left: 13.5px; }
         }
 
-        .rt-checkbox, .rt-radio {
+        .rt-checkbox, .rt-radio, button{
+            background-color: inherit;
             cursor: pointer;
+            padding: 0 25px 0 15px;
             height: 100%;
             width: 100%;
-            padding: 0 25px 0 15px;
             flex: 1;
             color: #959595;
             font-size: 1.5rem;

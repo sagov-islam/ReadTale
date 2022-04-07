@@ -65,7 +65,7 @@ export default class ReturnHTML {
                         <span class="rt-checkbox__style" data-dropdown=${props.dataAtr}></span>
                     </label>
                     `
-                    :
+                    : props.inputName === 'radio' ?
                     `
                     <label class="rt-radio" data-dropdown=${props.dataAtr}>
                         <p data-dropdown=${props.dataAtr}>${props.title}</p>
@@ -73,6 +73,14 @@ export default class ReturnHTML {
                         <span class="rt-radio__style" data-dropdown=${props.dataAtr}></span>
                     </label>
                     `
+                    : props.inputName === 'link' ?
+
+                    `
+                    <button data-dropdown=${props.dataAtr}>${props.title}</button>
+
+                    
+                    `
+                    : ''
                     }
                     
                 </li>

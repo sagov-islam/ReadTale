@@ -2,10 +2,11 @@ import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import Comment from './Comment.min.js';
 import Slicer from './Slicer.min.js';
-import Modal from './Modal.min.js'
+import Modal from './Modal.min.js';
 import ReturnHTML from './ReturnHTML.min.js';
 
 $(() => {
+    const bookId = parseInt($('body').data().bookid);
     
     // SMOOTH SHOW ---->
     const spinner = new HideIt({
@@ -86,8 +87,8 @@ $(() => {
 
     const slicer = new Slicer([], { start: 0, end: 5 });
     let allShowed = false;
-    Comment.dynamicTextareaHeight();
     
+    Comment.dynamicTextareaHeight();
     $('#main-textarea').on('submit', function(event) {
         event.preventDefault();
 
@@ -107,8 +108,6 @@ $(() => {
     })
 
     const comments = [];
-    const bookId = parseInt($('.rt-book').attr('id'));
-
     $.get('../database/comments/comments.json', {}, (data) => {
 
         $(data).each((index, commentProps) => {
@@ -120,14 +119,16 @@ $(() => {
         slicer.addSlicedComments('.rt-comments');
         ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
 
-        $('button#show-more-comments').on('click', () => {
-            slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 5 };
-            slicer.addSlicedComments('.rt-comments');
-            ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
-            if (slicer.indexes.end <= slicer.data.length) return
-            allShowed = true;
-            
-        })
+        
+    })
+
+    $('button#show-more-comments').on('click', () => {
+        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 5 };
+        slicer.addSlicedComments('.rt-comments');
+        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
+
+        if (slicer.indexes.end <= slicer.data.length) return
+        allShowed = true;
     })
 
     new Modal({

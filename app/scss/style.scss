@@ -81,7 +81,7 @@ body {
 .rt-textarea {
     border-left: 1px solid #494949;
     padding: 15px 0px 0px 25px;
-    margin-top: 30px;
+    
     
     textarea {
         border-radius: $radius-default;
@@ -111,4 +111,23 @@ body {
 
 #main-textarea {
     margin-bottom: 50px;
+    border-left: none;
+    padding: 0;
 }
+
+.rt-silver-wrapper {
+    background-color: #1C1C1C;
+    margin-top: 77px;
+    
+    padding: 50px 0;
+}
+
+.rt-dropdowns {
+    display: flex;
+    position: sticky;
+    z-index: 100;
+    top: 40px;
+    margin-left: 50px;
+
+}
+
