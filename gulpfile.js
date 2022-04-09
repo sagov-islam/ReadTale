@@ -23,7 +23,7 @@ function startServer() {
 }
 
 function styles() {
-    return src(['app/scss/variables.scss', 'app/scss/reboot.scss' , 'app/scss/**/*.scss'])
+    return src(['app/scss/variables.scss', 'app/scss/reboot.scss' , 'app/scss/style.scss', 'app/scss/libs/**/*.scss', 'app/scss/adaptation.scss'])
         .pipe(sourcemaps.init())
         .pipe(concat('style.min.css'))
         .pipe(scss({ outputStyle: 'compressed' }))
@@ -60,7 +60,7 @@ function html() {
 }
 
 function json() {
-    return src(['app/database/**/*.json'], {base: 'app'})
+    return src(['app/database/**/*.+(json|txt)'], {base: 'app'})
     .pipe(dest('dist/'))
 }
 
@@ -75,7 +75,7 @@ function watcher() {
     watch(['app/scss/**/*.scss'], styles)
     watch(['app/js/**/*.js'], scripts).on('change', server.reload);
     watch(['app/images/**/*.+(jpg|svg|png)'], images).on('change', server.reload);
-    watch(['app/database/**/*.json'], json).on('change', server.reload);
+    watch(['app/database/**/*.+(json|txt|)'], json).on('change', server.reload);
 }
 
 
