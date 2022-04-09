@@ -1,4 +1,4 @@
-import DOMWorker from './DomWorker.min.js';
+'use strict';
 
 export default class TypeIt {
 
@@ -40,7 +40,7 @@ export default class TypeIt {
             if (typeof textList[line] === 'string') {
                 this.#result += textList[line][letter];
                 
-                DOMWorker.addElement(this.#props.containerSelector, this.#result)
+                $(this.#props.containerSelector).html(this.#result)
 
                 this.#timeOut(this.#props.interval, line, ++letter);
                 return

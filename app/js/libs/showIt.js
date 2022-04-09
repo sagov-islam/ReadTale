@@ -1,4 +1,5 @@
-import DOMWorker from "./DomWorker.min.js";
+'use strict';
+
 import { visible } from './variables.min.js';
 
 export default class ShowIt {

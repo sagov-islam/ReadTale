@@ -1,13 +1,14 @@
+'use strict';
+
 import EventListener from './EventListener.min.js';
-import DOMWorker from './DomWorker.min.js';
 import { visible, invisible } from './variables.min.js';
 
 export default class DropDownEventListener extends EventListener {
     
     // STATIC ---->
     static closeIfClickWindow(dropdown) {
-        const list = DOMWorker.findElementAndReturn('.rt-dropdown__list', dropdown);
-        const arrorw = DOMWorker.findElementAndReturn('.rt-dropdown__button-img', dropdown);
+        const list = $('.rt-dropdown__list', dropdown);
+        const arrorw = $('.rt-dropdown__button-img', dropdown);
         const dataAtr = $(dropdown).data().dropdown;
 
         this.clickWindow((event) => {
@@ -22,9 +23,9 @@ export default class DropDownEventListener extends EventListener {
     static openIfClickButton(dropdown, transition = 0.2) {
         visible.transition = `${transition}s`;
 
-        const list = DOMWorker.findElementAndReturn('.rt-dropdown__list', dropdown);
-        const button = DOMWorker.findElementAndReturn('.rt-dropdown__button', dropdown);
-        const arrorw = DOMWorker.findElementAndReturn('.rt-dropdown__button-img', dropdown);
+        const list = $('.rt-dropdown__list', dropdown);
+        const button = $('.rt-dropdown__button', dropdown);
+        const arrorw = $('.rt-dropdown__button-img', dropdown);
         
         button.on('click', () => {
             const isHasFocus = dropdown[0].classList.contains('focus');

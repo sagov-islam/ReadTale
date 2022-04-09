@@ -1,4 +1,5 @@
-import DOMWorker from './DomWorker.min.js';
+'use strict';
+
 import ReturnHTML from './ReturnHTML.min.js';
 import DropDownEventListener from './DropDownEventListener.min.js';
 

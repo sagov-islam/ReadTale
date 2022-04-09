@@ -1,3 +1,5 @@
+'use strict';
+
 import Fetcher from './Fetcher.min.js'
 
 export default class Filter {

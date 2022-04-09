@@ -1,3 +1,5 @@
+'use strict';
+
 import ReturnHTML from './ReturnHTML.min.js'
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';

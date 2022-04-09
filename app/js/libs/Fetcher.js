@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Fetcher {
     #informationUrl = '/database/books/information.json'
     #pagesUrl = '/database/books/information.json'

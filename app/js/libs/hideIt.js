@@ -5,7 +5,7 @@ export default class HideIt {
     #props;
     constructor(props) {
         this.#props = props;
-        this.#props.element = $(props.selector);
+        this.#props.element = $(props.selector, props.context ? props.context : '');
     }
 
     // PUBLIC ---->

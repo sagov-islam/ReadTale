@@ -1,3 +1,5 @@
+'use strict';
+
 import ReturnHTML from './ReturnHTML.min.js';
 import Comment from './Comment.min.js';
 

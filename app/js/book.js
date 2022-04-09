@@ -1,9 +1,10 @@
+'use strict';
+
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import Comment from './Comment.min.js';
 import Slicer from './Slicer.min.js';
 import Modal from './Modal.min.js';
-import ReturnHTML from './ReturnHTML.min.js';
 
 $(() => {
     const bookId = parseInt($('body').data().bookid);
@@ -88,17 +89,18 @@ $(() => {
     const slicer = new Slicer([], { start: 0, end: 5 });
     let allShowed = false;
     
+    // TEXTAREA ---->
     Comment.dynamicTextareaHeight();
     $('#main-textarea').on('submit', function(event) {
         event.preventDefault();
 
-        const value = $('textarea', $(this)).val();
+        const textarea = $('textarea', $(this));
 
         slicer.data.push(new Comment({
-            name: 'Alexdsfadf',
-            date: '13',
-            text: value,
-            img: '25'
+            name: 'Гость',
+            date: new Date().toLocaleDateString(),
+            text: textarea.val(),
+            img: './images/user-image.jpg'
         }))
 
         if ( ! allShowed) return
@@ -106,7 +108,9 @@ $(() => {
         slicer.addSlicedComments('#main-comments');
         ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
     })
+    // <---- TEXTAREA
 
+    // COMMENTS ---->
     const comments = [];
     $.get('../database/comments/comments.json', {}, (data) => {
 
@@ -121,7 +125,9 @@ $(() => {
 
         
     })
+    // <---- COMMENTS
 
+    // SHOW MORE COMMENTS ---->
     $('button#show-more-comments').on('click', () => {
         slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 5 };
         slicer.addSlicedComments('.rt-comments');
@@ -130,11 +136,22 @@ $(() => {
         if (slicer.indexes.end <= slicer.data.length) return
         allShowed = true;
     })
+    // < ---- SHOW MORE COMMENTS
 
+    $('.rt-chapter__link').on('click', function(event) {
+        event.preventDefault();
+
+        const chapterNum = $('.rt-chapter__num', $(this)).text();
+        localStorage.setItem('chapterNum', chapterNum);
+
+        document.location.href = "chapter.html";
+    })
+
+
+    // GRADE ---->
     new Modal({
         stars: true,
         name: 'grade'
     }).create();
-
-    
+    // <---- GRADE
 })

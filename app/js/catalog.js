@@ -1,6 +1,7 @@
+'use strict';
+
 import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
-import DOMWorker from './DomWorker.min.js';
 import DropDown from './DropDown.min.js';
 import Filter from './Filter.min.js'
 import Slicer from './Slicer.min.js';
@@ -26,7 +27,7 @@ $(() => {
         px: '50px',
         seconds: 0.5,
         callback: () => {
-            DOMWorker.findElementAndReturn('.rt-loader').remove();
+            $('.rt-loader').remove();
 
             const catalog = new ShowIt({ selector: 'header, section, footer', seconds: 0.5 });
             catalog.smoothShow();

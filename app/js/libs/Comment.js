@@ -1,4 +1,5 @@
-import HideIt from './HideIt.min.js';
+'use strict';
+
 import ReturnHTML from './ReturnHTML.min.js';
 import ShowIt from './ShowIt.min.js';
 
@@ -46,10 +47,12 @@ export default class Comment {
 
             $('.rt-comment__btn').show();
 
-            const value = textarea.val();
             comment.append(ReturnHTML.comment({
                 classes: ['rt-comments-inner'],
-                text: value
+                name: 'Гость',
+                date: new Date().toLocaleDateString(),
+                text: textarea.val(),
+                img: './images/user-image.jpg'
             }))
 
             form.remove();

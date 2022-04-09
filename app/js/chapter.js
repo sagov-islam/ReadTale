@@ -5,7 +5,6 @@ import HideIt from './HideIt.min.js';
 import ShowIt from './ShowIt.min.js';
 import Comment from './Comment.min.js';
 import Slicer from './Slicer.min.js';
-import Modal from './Modal.min.js';
 
 $(() => {
     const slicer = new Slicer([], { start: 0, end: 5 }); 
@@ -27,9 +26,8 @@ $(() => {
     // <---- SMOOTH SHOW
 
     
-
     let currentPage = 1;
-    let currentChapter = 1;
+    let currentChapter = localStorage.getItem('chapterNum');
 
     let pages;
     let chapters;
@@ -55,7 +53,7 @@ $(() => {
                 buttonSize: 'normal',
                 listSize: '100%',
                 transition: 0.2,
-                title: 'Страница',
+                title: 'Страницы',
                 inputName: 'link',
                 callback: function(dropDown) {
                     const buttons = $('.rt-dropdown__item button', dropDown );
@@ -121,7 +119,6 @@ $(() => {
             return
         }
 
-        
         $('.rt-page__text').html(pages[++currentPage])
         $('.rt-page__info-page').html(`Страница ${currentPage}`);
         $('.rt-page__info-chapter').html(`Глава ${currentChapter}`);
@@ -146,7 +143,46 @@ $(() => {
     })
     // <---- BUTTON LAST PAGE
 
-    
+
+    // SHOW MORE COMMENTS ---->
+    let allShowed = false;
+    $('button#show-more-comments').on('click', () => {
+        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 5 };
+        slicer.addSlicedComments('.rt-comments');
+        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
+
+        if (slicer.indexes.end <= slicer.data.length) return
+        allShowed = true;   
+    })
+    // <---- SHOW MORE COMMENTS
+
+
+    // TEXTAREA ---->
+    Comment.dynamicTextareaHeight();
+    $('#main-textarea').on('submit', function(event) {
+        event.preventDefault();
+
+        const textarea = $('textarea', $(this));
+        
+        slicer.data.push(new Comment({
+            name: 'Гость',
+            date: new Date().toLocaleDateString(),
+            text: $(textarea).val(),
+            img: './images/user-image.jpg'
+        }))
+        textarea.val('');
+
+        if (slicer.indexes.end >= slicer.data.length) allShowed = true;   
+        if ( ! allShowed) return
+
+        slicer.indexes = { start: slicer.data.length - 1, end: slicer.data.length };
+        slicer.addSlicedComments('#main-comments');
+        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
+    })
+    // <---- TEXTAREA
+
+
+    // HELPER FUNCTIONS ---->
     function dropDown(props, count) {
         const array = [];
         let i = 1;
@@ -165,14 +201,7 @@ $(() => {
         })
     }
 
-
-
-    
-
-
     let comments = [];
-    let allShowed = false;
-    
     function updateComments() {
         $.get('../database/comments/chapter-comments.json', {}, (data) => {
             $('.rt-comments').html('');
@@ -213,36 +242,6 @@ $(() => {
         
         return pages 
     }
+    // <---- HELPER FUNCTIONS
 
-    $('button#show-more-comments').on('click', () => {
-        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 5 };
-        slicer.addSlicedComments('.rt-comments');
-        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
-
-        if (slicer.indexes.end <= slicer.data.length) return
-        allShowed = true;   
-    })
-
-
-    Comment.dynamicTextareaHeight();
-    $('#main-textarea').on('submit', function(event) {
-        event.preventDefault();
-
-        const textarea = $('textarea', $(this));
-        
-        slicer.data.push(new Comment({
-            name: 'Александр',
-            date: new Date().toLocaleDateString(),
-            text: $(textarea).val(),
-            img: './images/user-image.jpg'
-        }))
-        textarea.val('');
-
-        if (slicer.indexes.end >= slicer.data.length) allShowed = true;   
-        if ( ! allShowed) return
-
-        slicer.indexes = { start: slicer.data.length - 1, end: slicer.data.length };
-        slicer.addSlicedComments('#main-comments');
-        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
-    })
 })
