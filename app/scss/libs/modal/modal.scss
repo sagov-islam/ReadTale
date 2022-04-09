@@ -1,5 +1,5 @@
 .rt-modal {
-    z-index: 50;
+    z-index: 200;
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -10,6 +10,7 @@
     backdrop-filter: blur(15px);
     overflow-x: hidden;
     overflow-y: auto;
+    
     &__content {
         position: absolute;
         background-color: #272727;

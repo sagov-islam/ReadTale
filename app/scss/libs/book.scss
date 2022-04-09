@@ -33,6 +33,7 @@
         &-grade {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
 
             &-num {
                 font-size: 2.5rem;

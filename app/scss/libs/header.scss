@@ -1,14 +1,14 @@
 .rt-header {
-    position: relative;
-    z-index: 101;
+    
     width: 100%;
     padding: 17px 0;
-    height: 82px;
+    min-height: 82px;
 
     &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
 
         &-left {
             display: flex;
