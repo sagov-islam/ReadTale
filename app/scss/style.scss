@@ -9,16 +9,24 @@ body {
     background-color: $color-black;
 }
 
+header {
+    position: relative;
+    z-index: 100;
+}
+
 .readtale {
     display: flex;
     align-items: center;
     height: calc(100vh - 82px);
+    position: absolute;
+    z-index: -1;
 
     &__content {
         position: relative;
     }
 
     &__bg-title {
+        position: relative;
         font-family: $montserrat;
         font-weight: $black;
         font-size: 8vw;
@@ -82,7 +90,6 @@ body {
     border-left: 1px solid #494949;
     padding: 15px 0px 0px 25px;
     
-    
     textarea {
         border-radius: $radius-default;
         background-color: $input-color-bg;
@@ -131,3 +138,104 @@ body {
 
 }
 
+.rt-hamburger {
+    display: none;
+    position: relative;
+
+    &__btn {
+        width: 61px;
+        height: 61px;
+        background-color: $input-color-bg;
+        border-radius: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 15px;
+
+        span {
+            display: inline-block;
+            height: 3px;
+            width: 100%;
+            border-radius: 5px;
+            background-color: $color-silver;
+            &:not(:last-child) {
+                margin-bottom: 6px;
+            }
+        }
+
+        &:hover {
+            background-color: #363636;
+        }
+
+        &:active {
+                background-color: #313131;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        z-index: 1000;
+
+        // right: calc(100% - 61px) ;
+        right: 0 ;
+        
+
+        margin-top: 24px;
+        background-color: #313131;
+        border-radius: $radius-default;
+        box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+        width: 10000px;
+        max-width: 500px;
+        padding: 20px 20px 50px 20px;
+        .rt-input-search {
+            width: 100%;
+            input {
+                border-color: #444444;
+                &:focus {
+                    color: $color-white;
+                    border-color: #4e4e4e;
+        
+                    & + svg{
+                        fill: #5c5c5c;
+                    }
+                }
+
+            }
+        }
+
+        .rt-nav {
+            margin-top: 50px;
+            justify-content: center;
+            &__list {
+                flex-direction: column;
+
+            }
+
+            &__item {
+                text-align: center;
+
+                &:not(:last-child) {
+                    margin: 0;
+                }
+                &:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+        }
+    } 
+}
+
+.rt-about-us {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+        margin-top: 20px;
+        max-width: 800px;
+    }
+}
