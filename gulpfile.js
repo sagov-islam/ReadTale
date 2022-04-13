@@ -78,5 +78,9 @@ function watcher() {
     watch(['app/database/**/*.+(json|txt|)'], json).on('change', server.reload);
 }
 
+function deleteDist() {
+    return del('dist')
+}
 
+exports.build = series(deleteDist, styles, html, images, json, scripts)
 exports.default = parallel(startServer, watcher, series( styles, html, json, scripts));
