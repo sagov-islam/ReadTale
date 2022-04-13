@@ -92,7 +92,7 @@ export default class ReturnHTML {
 
     static card(props) {
         return `
-        <li class="rt-card rt-anim-top">
+        <li class="rt-card rt-anim-top" id="${props.id}">
             <a href="./book.html" class="rt-card__link">
                 <div class="rt-card__content">
                     <div class="rt-card__image-wrapper">
@@ -205,6 +205,43 @@ export default class ReturnHTML {
                 </li>
             </ul>
         
+        `
+    }
+
+    static bookInformation(props) {
+        return `
+        <div class="rt-container-book-information">
+            <img class="rt-book__img" width="345" height="624" src="${props.image}" alt="">
+            <div class="rt-book__content">
+                <div class="rt-book__content-header">
+                    <p class="rt-book__content-author">${props.author}</p>
+                    <h1 class="rt-h1">${props.name}</h1>
+                    <div class="rt-book__content-btns">
+                        <a class="rt-btn rt-btn--style-orange rt-btn--size-normal rt-mr-default" href="./chapter.html">Начать чтение</a>
+                        <button class="rt-btn rt-btn--style-silver rt-btn--size-normal">В избранное</button>
+                    </div>
+                </div>
+
+                <div class="rt-book__content-footer">
+                    <div class="rt-book__content-grade">
+                        <button class="rt-book__content-grade-btn rt-mr-default" data-modal="grade">
+                            <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                            Оценить
+                        </button>
+                        <ul class="rt-stars rt-mr-default">
+                            ${props.stars.html}
+                        </ul>
+                        <p class="rt-book__content-grade-num">${props.stars.number}</p>
+                    </div>
+                    <p class="rt-text rt-book__content-synopsis">
+                    ${props.synopsis}
+                    </p>
+                    <ul class="rt-tags">
+                        ${props.genres.join('')}
+                    </ul>
+                </div>
+            </div>
+        </div>
         `
     }
     // <---- STATIC

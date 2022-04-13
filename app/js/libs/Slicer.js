@@ -44,11 +44,19 @@ export default class Slicer {
                 name: book.name,
                 synopsis: book.synopsis,
                 genres: book.genres,
-                image: book.image
+                image: book.image,
+                id: book.id
             })
         })
         
         container.append(html);
+
+        
+        $('.rt-card').on('click', function(event) {
+            event.preventDefault();
+            localStorage.setItem('currentBookId', $(this).attr('id'));
+            window.location.href = 'book.html'
+        })
 
         if (this.data.length <= 5) $('button#show-more-books').hide();
         if (this.data.length > 5) $('button#show-more-books').show();

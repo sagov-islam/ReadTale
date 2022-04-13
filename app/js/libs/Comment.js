@@ -52,7 +52,7 @@ export default class Comment {
                 name: 'Гость',
                 date: new Date().toLocaleDateString(),
                 text: textarea.val(),
-                img: './images/user-image.jpg'
+                img: './images/guest.png'
             }))
 
             form.remove();

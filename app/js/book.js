@@ -5,10 +5,50 @@ import ShowIt from './ShowIt.min.js';
 import Comment from './Comment.min.js';
 import Slicer from './Slicer.min.js';
 import Modal from './Modal.min.js';
+import ReturnHTML from './ReturnHTML.min.js';
+
+const currentBookId = +localStorage.getItem('currentBookId');
+let bookInformation;
+
+function addBookInformation() {
+    $.get('../database/books/information.json', {}, (data) => {
+        $(data).each((index, book) => {
+            if (book.id !== currentBookId) return
+            bookInformation = book
+        })
+
+        const genres = bookInformation.genres.map((genre) => `<li class="rt-tags__item">${genre}</li>`);
+        const stars = String(bookInformation.stars);
+        let starsNumber = stars.length === 1 ? `${stars}.0` : stars;
+
+        let starsHtml = '';
+        for (let i = 1; i <= 10; i++) {
+                starsHtml += `
+                <li class="rt-stars__item ${i <= bookInformation.stars ? 'checked' : ''}">
+                   <svg width="31" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15.5 0 4.79 9.874L31 11.467l-7.75 7.681L25.079 30 15.5 24.874 5.921 30 7.75 19.148 0 11.467l10.71-1.593L15.5 0Z"/></svg>
+                </li>
+                `
+        }
+
+        $('#bookInfo').html(ReturnHTML.bookInformation({
+            image: bookInformation.image,
+            author: bookInformation.author,
+            name: bookInformation.name,
+            synopsis: bookInformation.synopsis,
+            genres: genres,
+            stars: {
+                html: starsHtml,
+                number: starsNumber
+            }
+        }))
+        
+    })
+
+}
+addBookInformation();
 
 $(() => {
-    const bookId = parseInt($('body').data().bookid);
-    
+
     // SMOOTH SHOW ---->
     const spinner = new HideIt({
         selector: '.rt-loader__content',
@@ -100,13 +140,15 @@ $(() => {
             name: 'Гость',
             date: new Date().toLocaleDateString(),
             text: textarea.val(),
-            img: './images/user-image.jpg'
+            img: './images/guest.png'
         }))
-
+        if (slicer.indexes.end >= slicer.data.length) allShowed = true;   
         if ( ! allShowed) return
+
+
         slicer.indexes = { start: slicer.data.length - 1, end: slicer.data.length };
         slicer.addSlicedComments('#main-comments');
-        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
+        ShowIt.smoothShowSlicedElements('.rt-comments > .rt-comment', slicer.indexes, 0.5);
     })
     // <---- TEXTAREA
 
@@ -115,7 +157,7 @@ $(() => {
     $.get('../database/comments/comments.json', {}, (data) => {
 
         $(data).each((index, commentProps) => {
-            if (commentProps.bookId !== bookId) return
+            if (commentProps.bookId !== currentBookId) return
             comments.push(new Comment(commentProps));
         })
 

@@ -8,7 +8,7 @@ import Slicer from './Slicer.min.js';
 
 $(() => {
     const slicer = new Slicer([], { start: 0, end: 5 }); 
-    const bookId = parseInt($('body').data().bookid);
+    const bookId = +localStorage.getItem('currentBookId');
 
     // SMOOTH SHOW ---->
     const spinner = new HideIt({
@@ -47,14 +47,19 @@ $(() => {
 
             pagesCount = Object.keys(pages).length
             chaptersCount = Object.keys(chapters).length
+
+            const array = [];
+            let i = 1;
+            for(i; i <= pagesCount; i++) { array[i - 1] = i };
             
-            dropDown({
+            new DropDown({
                 dataAtr: 'pages',
                 buttonSize: 'normal',
                 listSize: '100%',
                 transition: 0.2,
                 title: 'Страницы',
                 inputName: 'link',
+                list: returnList(pagesCount),
                 callback: function(dropDown) {
                     const buttons = $('.rt-dropdown__item button', dropDown );
 
@@ -73,9 +78,9 @@ $(() => {
                         updateComments();
                     })
                 }
-            }, pagesCount).create();
+            }).create();
 
-            dropDown({
+            new DropDown({
                 dataAtr: 'chapters',
                 classes: ['rt-mr-default'],
                 buttonSize: 'normal',
@@ -83,6 +88,7 @@ $(() => {
                 transition: 0.2,
                 title: 'Главы',
                 inputName: 'link',
+                list: returnList(chaptersCount),
                 callback: function(dropDown) {
                     const buttons = $('.rt-dropdown__item button', dropDown );
 
@@ -93,16 +99,18 @@ $(() => {
                         $.get(`${chapters[currentChapter].link}`, {dataType: "text"}, (link) => {
                             pages = returnPages(link);
                             pagesCount = Object.keys(pages).length;
+
+                            $('.rt-page__text').html(pages[currentPage]);
+                            $('.rt-page__info-page').html(`Страница ${currentPage}`);
+                            $('.rt-page__info-chapter').html(`Глава ${currentChapter}`);
+                    
+                            updateComments();
+                            createNewDropDownPages();
                         })
                         
-                        $('.rt-page__text').html(pages[currentPage]);
-                        $('.rt-page__info-page').html(`Страница ${currentPage}`);
-                        $('.rt-page__info-chapter').html(`Глава ${currentChapter}`);
-                
-                        updateComments();
                     })
                 }
-            }, chaptersCount).create();
+            }).create();
 
             $('.rt-page__text').html(pages[currentPage]);
             $('.rt-page__info-page').html(`Страница ${currentPage}`);
@@ -111,12 +119,16 @@ $(() => {
  
     })
 
+    
 
     // BUTTON NEXT PAGE --->
     $('button#next-page').on('click', function() {
         if (currentPage >= pagesCount) {
+            if (chapters[++currentChapter]) {
+                loadNewChapter();
+                return
+            }
             document.location.href = "book.html";
-            return
         }
 
         $('.rt-page__text').html(pages[++currentPage])
@@ -131,8 +143,11 @@ $(() => {
     // BUTTON LAST PAGE --->
     $('button#last-page').on('click', function() {
         if (currentPage === 1) {
+            if (chapters[--currentChapter]) {
+                loadNewChapter();
+                return
+            }
             document.location.href = "book.html";
-            return
         }
 
         $('.rt-page__text').html(pages[--currentPage])
@@ -168,7 +183,7 @@ $(() => {
             name: 'Гость',
             date: new Date().toLocaleDateString(),
             text: $(textarea).val(),
-            img: './images/user-image.jpg'
+            img: './images/guest.png'
         }))
         textarea.val('');
 
@@ -177,12 +192,49 @@ $(() => {
 
         slicer.indexes = { start: slicer.data.length - 1, end: slicer.data.length };
         slicer.addSlicedComments('#main-comments');
-        ShowIt.smoothShowSlicedElements('.rt-comment', slicer.indexes, 0.5);
+        ShowIt.smoothShowSlicedElements('.rt-comments > .rt-comment', slicer.indexes, 0.5);
     })
     // <---- TEXTAREA
 
 
     // HELPER FUNCTIONS ---->
+    function returnList(num) {
+        const array = [];
+        for(let i = 1; i <= num; i++) { array[i - 1] = i };
+        return array
+    }
+    
+    function createNewDropDownPages() {
+        $('[data-dropdown="pages"]').html('');
+        new DropDown({
+            dataAtr: 'pages',
+            buttonSize: 'normal',
+            listSize: '100%',
+            transition: 0.2,
+            title: 'Страницы',
+            inputName: 'link',
+            list: returnList(pagesCount),
+            callback: function(dropDown) {
+                const buttons = $('.rt-dropdown__item button', dropDown );
+
+                buttons.on('click', function() {
+                    currentPage = parseInt($(this).text());
+
+                    if (currentPage > pagesCount) {
+                        document.location.href = "book.html";
+                        return
+                    }
+            
+                    $('.rt-page__text').html(pages[currentPage]);
+                    $('.rt-page__info-page').html(`Страница ${currentPage}`);
+                    $('.rt-page__info-chapter').html(`Глава ${currentChapter}`);
+            
+                    updateComments();
+                })
+            }
+        }).create();
+    }
+
     function dropDown(props, count) {
         const array = [];
         let i = 1;
@@ -241,6 +293,22 @@ $(() => {
         })
         
         return pages 
+    }
+
+    function loadNewChapter() {
+        currentPage = 1;
+                        
+        $.get(`${chapters[currentChapter].link}`, {dataType: "text"}, (link) => {
+            pages = returnPages(link);
+            pagesCount = Object.keys(pages).length;
+
+            $('.rt-page__text').html(pages[currentPage]);
+            $('.rt-page__info-page').html(`Страница ${currentPage}`);
+            $('.rt-page__info-chapter').html(`Глава ${currentChapter}`);
+    
+            updateComments();
+            createNewDropDownPages();
+        })
     }
     // <---- HELPER FUNCTIONS
 
