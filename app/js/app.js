@@ -118,6 +118,16 @@ $(() => {
         })
     }
     // <---- MENU << HAMBURGER >>
+
+    // SEARCH INPUT ---->
+    $('.rt-input-search__input').on('search', function() {
+        const value = $(this).val().toLowerCase();
+        if (value.length === 0) return
+
+        localStorage.setItem('searchVal', value);
+        document.location.href = 'search-page.html'
+    })
+    // <---- SEARCH INPUT
 });
 
 
