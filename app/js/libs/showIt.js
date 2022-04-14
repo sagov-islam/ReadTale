@@ -18,7 +18,6 @@ export default class ShowIt {
         const element = this.#props.element;
 
         show.transition =`${seconds}s`;
-        console.log(show);
         $(element).css(show);
 
         if (!this.#props.callback) return
