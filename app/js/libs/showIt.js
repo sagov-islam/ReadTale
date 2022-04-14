@@ -13,14 +13,16 @@ export default class ShowIt {
     // ---- PUBLIC ---->
 
     smoothShow() {
-        const show = {...visible}
-        show.transition =`${this.#props.seconds}s`;
+        const show = {...visible};
+        const seconds = this.#props.seconds;
+        const element = this.#props.element;
 
-        $(this.#props.element).css(show);
+        show.transition =`${seconds}s`;
+        console.log(show);
+        $(element).css(show);
 
         if (!this.#props.callback) return
         setTimeout(this.#props.callback, (this.#props.seconds * 1000));
-
     }
 
     static smoothShowSlicedElements(elementsSelector, indexes, seconds) {

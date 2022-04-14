@@ -48,10 +48,8 @@ export default class Slicer {
                 id: book.id
             })
         })
-        
         container.append(html);
 
-        
         $('.rt-card').on('click', function(event) {
             event.preventDefault();
             localStorage.setItem('currentBookId', $(this).attr('id'));

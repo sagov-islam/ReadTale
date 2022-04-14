@@ -22,6 +22,7 @@ $(() => {
         }
     })
 
+    // SMOOTH SHOW ---->
     const spinner = new HideIt({
         selector: '.rt-loader__content',
         px: '50px',
@@ -36,8 +37,9 @@ $(() => {
         }
     })  
     spinner.smoothHideY();
+    // <---- SMOOTH SHOW
 
-    
+    // BUTTON << FILTRATION >> ---->
     $('button#filter').on('click', () => {
         const selectedGenres = dropDownGenres.selectedInputs;
         const selectedSorting = dropDownSorting.selectedInputs;
@@ -56,13 +58,18 @@ $(() => {
         };
         filter.sort();  
     });
+       // <---- BUTTON << FILTRATION >>
 
+
+    // SHOW-MORE-BOOKS ---->
     $('button#show-more-books').on('click', () => {
         slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 10 };
         slicer.addSlicedBooks('.rt-container-cards');
         ShowIt.smoothShowSlicedElements('.rt-card', slicer.indexes, 0.1);
     });
+    // <---- SHOW-MORE-BOOKS
 
+    // DROPDOWNS ---->
     const dropDownGenres = new DropDown({
         dataAtr: 'genres',
         classes: ['rt-mr-default'],
@@ -109,4 +116,5 @@ $(() => {
         ]
     })
     dropDownSorting.create();
+    // <---- DROPDOWNS
 });

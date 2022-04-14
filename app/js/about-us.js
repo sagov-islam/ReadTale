@@ -5,6 +5,7 @@ import ShowIt from './ShowIt.min.js';
 
 $(() => {
 
+    // SMOOTH SHOW ---->
     const spinner = new HideIt({
         selector: '.rt-loader__content',
         px: '50px',
@@ -15,5 +16,6 @@ $(() => {
         }
     })  
     spinner.smoothHideY();
+    // <---- SMOOTH SHOW
 
 })

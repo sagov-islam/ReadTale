@@ -125,6 +125,7 @@ export default class Modal {
     }
 
     #hide(modal) {
+        $('body > .simplebar-vertical').first().show();
         new HideIt({
             selector: modal,
             seconds: 0.2,
