@@ -27,7 +27,7 @@ $(() => {
 
     
     let currentPage = 1;
-    let currentChapter = localStorage.getItem('chapterNum');
+    let currentChapter = 1;
 
     let pages;
     let chapters;
@@ -41,7 +41,7 @@ $(() => {
             if (book.id !== bookId) return
             chapters = book.chapters;
         })
-
+        
         $.get(`${chapters[currentChapter].link}`, {dataType: "text"}, (link) => {
             pages = returnPages(link);
 
