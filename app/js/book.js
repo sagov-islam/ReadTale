@@ -16,7 +16,7 @@ function addBookInformation() {
             if (book.id !== currentBookId) return
             bookInformation = book
         })
-
+        $('.rt-breadcrumbs__now').text(bookInformation.name);
         const genres = bookInformation.genres.map((genre) => `<li class="rt-tags__item">${genre}</li>`);
         const stars = String(bookInformation.stars);
         let starsNumber = stars.length === 1 ? `${stars}.0` : stars;
@@ -42,6 +42,12 @@ function addBookInformation() {
             }
         }))
         
+        // GRADE ---->
+        new Modal({
+            stars: true,
+            name: 'grade'
+        }).create();
+        // <---- GRADE
     })
 
 }
@@ -57,7 +63,7 @@ $(() => {
         callback: () => {
             $('.rt-loader').remove();
 
-            const blocks = new ShowIt({ selector: 'header, footer, section', seconds: 0.5 });
+            const blocks = new ShowIt({ selector: 'header, footer, section, .rt-breadcrumbs', seconds: 0.5 });
             blocks.smoothShow();    
         }
     })
@@ -190,10 +196,5 @@ $(() => {
     })
 
 
-    // GRADE ---->
-    new Modal({
-        stars: true,
-        name: 'grade'
-    }).create();
-    // <---- GRADE
+   
 })

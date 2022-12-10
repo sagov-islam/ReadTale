@@ -14,7 +14,7 @@ $(() => {
         genres: 'Все жанры',
         callback: sortedBooksInfo => {
             slicer.data = sortedBooksInfo;
-            slicer.indexes = { start: 0, end: 10 };
+            slicer.indexes = { start: 0, end: 8 };
 
             $('.rt-container-cards').html('');
             slicer.addSlicedBooks('.rt-container-cards');
@@ -49,7 +49,7 @@ $(() => {
             genres: selectedGenres,
             callback: sortedBooksInfo => {
                 slicer.data = sortedBooksInfo;
-                slicer.indexes = { start: 0, end: 10 };
+                slicer.indexes = { start: 0, end: 8 };
                 
                 $('.rt-container-cards').html('');
                 slicer.addSlicedBooks('.rt-container-cards');
@@ -63,7 +63,7 @@ $(() => {
 
     // SHOW-MORE-BOOKS ---->
     $('button#show-more-books').on('click', () => {
-        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 10 };
+        slicer.indexes = { start: slicer.indexes.end, end: slicer.indexes.end + 8 };
         slicer.addSlicedBooks('.rt-container-cards');
         ShowIt.smoothShowSlicedElements('.rt-card', slicer.indexes, 0.1);
     });
