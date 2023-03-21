@@ -1,0 +1,20 @@
+.rt-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+    &__item {
+        cursor: default;
+        display: flex;
+        align-items: center;
+        padding: 9px 12px;
+        margin-bottom: 12px;
+        background-color: $input-color-bg;
+        border-radius: $radius-default;
+        font-size: $font-size-text;
+        color: #A6A6A6;
+
+        &:not(:last-child) {
+            margin-right: 12px;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+.rt-tabs {
+    margin-bottom: 40px;
+
+    &__item {
+
+        input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+
+            &:checked {
+                & + div {
+                    color: $color-orange;
+                }
+            }
+        }
+
+        div {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            font-family: $inter;
+            font-size: $font-size-text;
+            color: #7B7B7B;
+            
+            
+        }
+    }
+
+    &__list {
+        position: relative;
+        display: flex;
+    }
+
+    &__lines {
+        height: 3px;
+        width: 100%;
+        position: relative;
+        &-silver {
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-color: #292929;
+        }
+
+        &-orange {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+            height: 100%;
+            width: 100px;
+            background-color: $color-orange;
+            transition: left .2s, width .2s;
+        }
+    }
+}

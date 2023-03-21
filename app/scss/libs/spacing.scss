@@ -1,0 +1,30 @@
+.rt-m {
+    &l {
+        &-80 {
+            margin-left: 8rem;
+        }
+    }
+
+    &r {
+        &-default {
+            margin-right: $spacing-default;
+        }
+    }
+
+    &t {
+        &-20 {
+            margin-top: 20px;
+        }
+        &-80 {
+            margin-top: 80px;
+        }
+        &-default {
+            margin-top: $spacing-default;
+        }
+    }
+    &b {
+        &-20 {
+            margin-bottom: 20px;
+        }
+    }
+}

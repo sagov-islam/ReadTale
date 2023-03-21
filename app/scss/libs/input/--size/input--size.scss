@@ -1,0 +1,14 @@
+.rt-input--size {
+
+    &-small {
+        max-width: $input-width-small;
+    }
+
+    &-normal {
+        max-width: $input-width-normal;
+    }
+
+    &-big {
+        max-width: $input-width-big;
+    }
+}

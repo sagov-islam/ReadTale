@@ -1,0 +1,21 @@
+.rt-input-text {
+    height: $input-height-default;
+    background-color: #303030;
+    border-radius: $radius-default;
+    border: 1px solid #303030;
+    padding: 0 16px;
+    font-family: $inter;
+    font-size: $font-size-text;
+    color: #646464;
+
+    transition: border .2s;
+
+    &:hover {
+        border: 1px solid #3d3d3d;
+    }
+
+    &:focus {
+        border-color: $color-orange;
+        color: $color-orange;
+    }
+}

@@ -1,0 +1,34 @@
+.rt-breadcrumbs {
+    margin-top: 20px;
+    display: flex;
+    height: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+
+    &__link {
+        font-weight: $regular;
+        font-size: $font-size-text;
+        color: $color-white;
+
+       
+        margin-right: 8px;
+        
+        &:not(:first-child) {
+            margin-left: 8px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+        cursor: pointer;
+    }
+
+    &__now {
+        font-weight: $regular;
+        font-size: $font-size-text;
+        color: $color-silver;
+
+        margin-left: 8px;
+        cursor: default;
+    }
+}

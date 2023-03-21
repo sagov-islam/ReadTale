@@ -1,0 +1,23 @@
+.rt-stars {
+    display: flex;
+
+    &__item {
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+
+        svg {
+            fill: #444;
+            transition: .2s;
+        }
+    }
+}
+
+.rt-modal .rt-stars__item {
+    cursor: pointer;
+
+    &:hover svg {
+        fill: $color-orange;
+    }
+}

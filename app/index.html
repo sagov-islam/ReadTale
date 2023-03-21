@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@900&family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>ReadTale</title>
+    <link rel="icon" href="images/favicons/favicon.svg" sizes="any" type="image/svg">
+</head>
+<body data-simplebar>
+
+    <section class="rt-loader">
+        <h2 class="rt-element-invisible">Loading</h2>
+        <div class="rt-loader__content">
+                <div class="rt-loader__spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="rt-modal rt-anim-center"></div>
+    
+    @@include('html/header.html')
+    
+         
+    <section>
+        <h1 class="rt-element-invisible">ReadTale - Литературное сообщество</h1>
+        <div class="readtale">
+            <div class="rt-container-fluid">
+                <div class="readtale__content">
+                    <h3><pre  class="readtale__bg-title"></pre></h3>
+                    <div class="readtale__text rt-anim-left">
+                        <h2 class="readtale__text-title">Литературное<br>Сообщество</h2>
+                        <p class="readtale__text-description">Повседневная практика показывает, что постоянное информационно-пропаг андистское обеспечение</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <div class="rt-bg"></div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/simplebar.min.js"></script>
+    <script type="module" src="js/app.min.js"></script>
+    <script type="module" src="js/index.min.js"></script>
+</body>
+</html>
